@@ -1,0 +1,223 @@
+/* BEGIN MEYER RESET */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* END MEYER RESET */
+
+html {
+  box-sizing: border-box;
+  background-color: navy;
+  color: bisque;
+}
+/* BEGIN HEADER STYLES */
+
+header {
+  display: none;
+  justify-content: center;
+  border-bottom: 2px solid black;
+}
+
+.title {
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+/* END HEADER STYLES */
+
+/* BEGIN MAIN CONTENT STYLES */
+
+* {
+  /* border: 1px solid orange; */
+}
+
+.mainContent {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainContent * {
+  padding: 5px;
+}
+
+.location {
+  margin-top: 5vh;
+  font-size: 1.5rem;
+}
+
+.temp {
+  font-size: 3rem;
+}
+
+.buttonContainer {
+  display: flex;
+}
+
+.forecastContainer {
+  display: flex;
+  align-items: center;
+}
+
+.tempRangeContainer {
+  display: flex;
+}
+
+.otherWeatherInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.other {
+  width: 30%;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+/* END MAIN CONTENT STYLES */
+
+/* BEGIN FOOTER STYLES */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer * {
+  padding: 5px;
+}
+
+.sourceContainer,
+.copyrightContainer {
+  display: flex;
+  align-items: center;
+}
+
+/* END FOOTER STYLES */
+
+@media (min-width: 600px) {
+  header {
+    display: flex;
+  }
+} ;
