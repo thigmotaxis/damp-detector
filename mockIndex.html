@@ -23,41 +23,57 @@
         <div class="highTemp">H: 80°</div>
         <div class="lowTemp">L: 60°</div>
       </div>
-      <div class="forecast">
-        <ul>
-          <li class="forecastContainer">
-            <div>Day 1</div>
-            <img src="src/images/sunnyIcon-24w.png" alt="sunny" />
-            <div>H: X° L: Y°</div>
-          </li>
-          <li class="forecastContainer">
-            <div>Day 2</div>
-            <img src="src/images/cloudyIcon-24w.png" alt="cloudy" />
-            <div>H: X° L: Y°</div>
-          </li>
-          <li class="forecastContainer">
-            <div>Day 3</div>
-            <img
-              src="src/images/partlyCloudyIcon-24w.png"
-              alt="partly cloudy"
-            />
-            <div>H: X° L: Y°</div>
-          </li>
-          <li class="forecastContainer">
-            <div>Day 4</div>
-            <img src="src/images/rainyIcon-24w.png" alt="rainy" />
-            <div>H: X° L: Y°</div>
-          </li>
-          <li class="forecastContainer">
-            <div>Day 5</div>
-            <img src="src/images/sunnyIcon-24w.png" alt="sunny" />
-            <div>H: X° L: Y°</div>
-          </li>
-        </ul>
-      </div>
+      <ul class="fiveDayForecast">
+        <li class="forecastContainer">
+          <div>Day 1</div>
+          <img
+            class="weatherIcon"
+            src="src/images/sunnyIcon-24w.png"
+            alt="sunny"
+          />
+          <div>H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div>Day 2</div>
+          <img
+            class="weatherIcon"
+            src="src/images/cloudyIcon-24w.png"
+            alt="cloudy"
+          />
+          <div>H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div>Day 3</div>
+          <img
+            class="weatherIcon"
+            src="src/images/partlyCloudyIcon-24w.png"
+            alt="partly cloudy"
+          />
+          <div>H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div>Day 4</div>
+          <img
+            class="weatherIcon"
+            src="src/images/rainyIcon-24w.png"
+            alt="rainy"
+          />
+          <div>H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div>Day 5</div>
+          <img
+            class="weatherIcon"
+            src="src/images/sunnyIcon-24w.png"
+            alt="sunny"
+          />
+          <div>H: X° L: Y°</div>
+        </li>
+      </ul>
+
       <div class="otherWeatherInfo">
         <div class="other aqi">AQI PH</div>
-        <div class="other wind">Windspeed/direction PH</div>
+        <div class="other wind">Wind PH</div>
         <div class="other humidity">Humidity PH</div>
         <div class="other feelsLike">Feels Like PH</div>
       </div>
@@ -67,11 +83,19 @@
         href="https://github.com/thigmotaxis/damp-detector"
         class="sourceContainer"
       >
-        <img src="src/images/gitHubLogo-24w.png" alt="the github logo" />
+        <img
+          class="repoLogo"
+          src="src/images/gitHubLogo-24w.png"
+          alt="the github logo"
+        />
         <div>View Source</div>
       </a>
       <div class="copyrightContainer">
-        <img src="src/images/copyright-24w.png" alt="the copyright symbol" />
+        <img
+          class="copyrightSymbol"
+          src="src/images/copyright-24w.png"
+          alt="the copyright symbol"
+        />
         <div>2022 Abe Industries</div>
       </div>
     </footer>

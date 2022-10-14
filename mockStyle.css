@@ -153,9 +153,9 @@ header {
 
 /* BEGIN MAIN CONTENT STYLES */
 
-* {
-  /* border: 1px solid orange; */
-}
+/* * {
+  border: 1px solid orange;
+} */
 
 .mainContent {
   width: 100vw;
@@ -249,4 +249,4 @@ footer * {
   a:hover {
     text-decoration: underline;
   }
-} ;
+}
