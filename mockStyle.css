@@ -129,6 +129,13 @@ html {
   background-color: navy;
   color: bisque;
 }
+
+a,
+a:visited {
+  text-decoration: none;
+  color: bisque;
+}
+
 /* BEGIN HEADER STYLES */
 
 header {
@@ -202,10 +209,20 @@ header {
 footer {
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 footer * {
-  padding: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .sourceContainer,
@@ -219,5 +236,17 @@ footer * {
 @media (min-width: 600px) {
   header {
     display: flex;
+  }
+  ul {
+    display: flex;
+  }
+
+  li {
+    /* display: flex; */
+    flex-direction: column;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 } ;
