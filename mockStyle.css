@@ -181,6 +181,15 @@ header {
   display: flex;
 }
 
+.changeLocation {
+  display: block;
+}
+
+.locationInput,
+.submit {
+  display: none;
+}
+
 .forecastContainer {
   display: flex;
   align-items: center;
