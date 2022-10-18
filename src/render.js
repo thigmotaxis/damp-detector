@@ -16,16 +16,16 @@ import copyright from "./images/copyright-24w.png";
   </header>
 
   <div class="mainContent">
-    <div class="location">Seattle</div>
-    <div class="temp">70° F</div>
+    <div class="location">--</div>
+    <div class="temp">--</div>
     <div class="buttonContainer">
       <button class="changeLocation">Change Location</button>
       <button class="toggleTempScale">Display Celsius</button>
     </div>
-    <div class="conditions">Cloudy</div>
+    <div class="conditions"></div>
     <div class="tempRangeContainer">
-      <div class="highTemp">H: 80°</div>
-      <div class="lowTemp">L: 60°</div>
+      <div class="highTemp">H: --</div>
+      <div class="lowTemp">L: --</div>
     </div>
     <ul class="fiveDayForecast">
       <li class="forecastContainer">
@@ -56,10 +56,10 @@ import copyright from "./images/copyright-24w.png";
     </ul>
 
     <div class="otherWeatherInfo">
-    <div class="other windSpeed">Wind Speed PH</div>
-    <div class="other windDirection">Wind Direction PH</div>
-      <div class="other humidity">Humidity PH</div>
-      <div class="other feelsLike">Feels Like PH</div>
+    <div class="other windSpeed">--</div>
+    <div class="other windDirection">--</div>
+      <div class="other humidity">--</div>
+      <div class="other feelsLike">--</div>
     </div>
   </div>
   <footer>
@@ -146,5 +146,4 @@ export const renderWeatherData = (processedWeatherData) => {
   domCache.windDirection.innerHTML = processedWeatherData.windDirection;
   domCache.humidity.innerHTML = processedWeatherData.humidity;
   domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
-  console.log(processedWeatherData);
 };
