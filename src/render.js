@@ -138,12 +138,19 @@ const toggleTempScale = () => {
 
 export const renderWeatherData = (processedWeatherData) => {
   domCache.location.innerHTML = processedWeatherData.location;
-  domCache.temperature.innerHTML = processedWeatherData.tempF;
   domCache.conditions.innerHTML = processedWeatherData.conditions;
-  domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
-  domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
   domCache.windSpeed.innerHTML = processedWeatherData.windSpeed;
   domCache.windDirection.innerHTML = processedWeatherData.windDirection;
   domCache.humidity.innerHTML = processedWeatherData.humidity;
-  domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
+  if (window.localStorage.getItem("tempScale") === "F") {
+    domCache.temperature.innerHTML = processedWeatherData.tempF;
+    domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
+    domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+    domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
+  } else {
+    domCache.temperature.innerHTML = processedWeatherData.tempC;
+    domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
+    domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
+    domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
+  }
 };
