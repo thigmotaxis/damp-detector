@@ -185,8 +185,7 @@ header {
   display: block;
 }
 
-.locationInput,
-.submit {
+.hidden {
   display: none;
 }
 
