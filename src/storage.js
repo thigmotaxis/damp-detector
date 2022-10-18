@@ -3,8 +3,7 @@ import { processWeatherData } from "./processData";
 
 // getData() - calls API and retrieves object
 
-export const getWeatherData = () => {
-  const loc = "seattle";
+export const getWeatherData = (loc = "shanghai") => {
   // ^^ placeholder for function that will retrieve location from input field
   // const location = getLocation()
   const apiKey = "375ca8e8e974816fe616fd7e2566782a";

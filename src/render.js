@@ -56,8 +56,8 @@ export const renderPage = (() => {
     </ul>
 
     <div class="otherWeatherInfo">
-      <div class="other aqi">AQI PH</div>
-      <div class="other wind">Wind PH</div>
+    <div class="other windSpeed">Wind Speed PH</div>
+    <div class="other windDirection">Wind Direction PH</div>
       <div class="other humidity">Humidity PH</div>
       <div class="other feelsLike">Feels Like PH</div>
     </div>
@@ -98,3 +98,28 @@ export const renderPage = (() => {
 })();
 
 // END RENDERING OF STATIC ELEMENTS
+
+const domCache = {
+  location: document.querySelector(".location"),
+  temperature: document.querySelector(".temp"),
+  conditions: document.querySelector(".conditions"),
+  highTemperature: document.querySelector(".highTemp"),
+  lowTemperature: document.querySelector(".lowTemp"),
+  windSpeed: document.querySelector(".windSpeed"),
+  windDirection: document.querySelector(".windDirection"),
+  humidity: document.querySelector(".humidity"),
+  feelsLike: document.querySelector(".feelsLike"),
+};
+
+export const renderWeatherData = (processedWeatherData) => {
+  domCache.location.innerHTML = processedWeatherData.location;
+  domCache.temperature.innerHTML = processedWeatherData.tempF;
+  domCache.conditions.innerHTML = processedWeatherData.conditions;
+  domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
+  domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+  domCache.windSpeed.innerHTML = processedWeatherData.windSpeed;
+  domCache.windDirection.innerHTML = processedWeatherData.windDirection;
+  domCache.humidity.innerHTML = processedWeatherData.humidity;
+  domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
+  console.log(processedWeatherData);
+};
