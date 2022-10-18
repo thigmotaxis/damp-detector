@@ -102,6 +102,7 @@ import copyright from "./images/copyright-24w.png";
 const domCache = {
   location: document.querySelector(".location"),
   temperature: document.querySelector(".temp"),
+  toggleTempScale: document.querySelector(".toggleTempScale"),
   conditions: document.querySelector(".conditions"),
   highTemperature: document.querySelector(".highTemp"),
   lowTemperature: document.querySelector(".lowTemp"),
@@ -111,8 +112,28 @@ const domCache = {
   feelsLike: document.querySelector(".feelsLike"),
 };
 
+const toggleTempScale = () => {
+  if (localStorage.getItem("tempScale") === "F") {
+    localStorage.setItem("tempScale", "C");
+    domCache.toggleTempScale.innerHTML = "Display Farenheight";
+    domCache.temperature.innerHTML = "Celsius temp";
+    domCache.highTemperature.innerHTML = "Celsius high temp";
+    domCache.lowTemperature.innerHTML = "Celsius low temp";
+    domCache.feelsLike.innerHTML = "Celsius feels like";
+  } else {
+    localStorage.setItem("tempScale", "F");
+    domCache.toggleTempScale.innerHTML = "Display Celsius";
+    domCache.temperature.innerHTML = "F temp";
+    domCache.highTemperature.innerHTML = "F high temp";
+    domCache.lowTemperature.innerHTML = "F low temp";
+    domCache.feelsLike.innerHTML = "F feels like";
+  }
+  console.log(localStorage.getItem("tempScale"));
+};
+
+// CREATE HANDLER FUNCTIONS
 (() => {
-  console.log(domCache.location);
+  domCache.toggleTempScale.addEventListener("click", toggleTempScale);
 })();
 
 export const renderWeatherData = (processedWeatherData) => {
