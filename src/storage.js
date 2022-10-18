@@ -3,11 +3,12 @@ import { processWeatherData } from "./processData";
 
 // getData() - calls API and retrieves object
 
-export const setDefaultTempScale = () => {
+// SETS INITIAL LOCAL STORAGE VALUES IF ABSENT
+(() => {
   if (!localStorage.getItem("tempScale")) {
     localStorage.setItem("tempScale", "F");
   }
-};
+})();
 
 export const getWeatherData = (loc = "shanghai") => {
   // ^^default is a placeholder for function that will retrieve location from input field

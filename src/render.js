@@ -7,7 +7,7 @@ import copyright from "./images/copyright-24w.png";
 
 // BEGIN RENDERING OF STATIC ELEMENTS
 
-export const renderPage = (() => {
+(() => {
   const body = document.querySelector("body");
   body.insertAdjacentHTML(
     "afterbegin",
@@ -110,6 +110,10 @@ const domCache = {
   humidity: document.querySelector(".humidity"),
   feelsLike: document.querySelector(".feelsLike"),
 };
+
+(() => {
+  console.log(domCache.location);
+})();
 
 export const renderWeatherData = (processedWeatherData) => {
   domCache.location.innerHTML = processedWeatherData.location;
