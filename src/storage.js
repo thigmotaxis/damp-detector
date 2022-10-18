@@ -10,7 +10,7 @@ import { processWeatherData } from "./processData";
 
 const createPromise = () => {
   const requestWeatherData = new Promise((resolve, reject) => {
-    const loc = "shanghai";
+    const loc = "washington dc";
     // ^^default is a placeholder for function that will retrieve location from input field
     // const loc = getLocation()
     const apiKey = "375ca8e8e974816fe616fd7e2566782a";

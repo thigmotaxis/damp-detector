@@ -113,22 +113,25 @@ const domCache = {
 };
 
 const toggleTempScale = () => {
+  // retrieve locally stored weather data and update display
+  const processedWeatherData = JSON.parse(
+    window.localStorage.getItem("currentWeatherData")
+  );
   if (localStorage.getItem("tempScale") === "F") {
     localStorage.setItem("tempScale", "C");
     domCache.toggleTempScale.innerHTML = "Display Farenheight";
-    domCache.temperature.innerHTML = "Celsius temp";
-    domCache.highTemperature.innerHTML = "Celsius high temp";
-    domCache.lowTemperature.innerHTML = "Celsius low temp";
-    domCache.feelsLike.innerHTML = "Celsius feels like";
+    domCache.temperature.innerHTML = processedWeatherData.tempC;
+    domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
+    domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
+    domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
   } else {
     localStorage.setItem("tempScale", "F");
     domCache.toggleTempScale.innerHTML = "Display Celsius";
-    domCache.temperature.innerHTML = "F temp";
-    domCache.highTemperature.innerHTML = "F high temp";
-    domCache.lowTemperature.innerHTML = "F low temp";
-    domCache.feelsLike.innerHTML = "F feels like";
+    domCache.temperature.innerHTML = processedWeatherData.tempF;
+    domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
+    domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+    domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
   }
-  console.log(localStorage.getItem("tempScale"));
 };
 
 // CREATE HANDLER FUNCTIONS
