@@ -1,8 +1,6 @@
 import { renderWeatherData } from "./render";
 import { processWeatherData } from "./processData";
 
-// getData() - calls API and retrieves object
-
 // SETS INITIAL LOCAL STORAGE VALUES IF ABSENT
 (() => {
   if (!localStorage.getItem("tempScale")) {
@@ -10,33 +8,49 @@ import { processWeatherData } from "./processData";
   }
 })();
 
-export const getWeatherData = (loc = "shanghai") => {
-  // ^^default is a placeholder for function that will retrieve location from input field
-  // const location = getLocation()
-  const apiKey = "375ca8e8e974816fe616fd7e2566782a";
+const createPromise = () => {
+  const requestWeatherData = new Promise((resolve, reject) => {
+    const loc = "shanghai";
+    // ^^default is a placeholder for function that will retrieve location from input field
+    // const loc = getLocation()
+    const apiKey = "375ca8e8e974816fe616fd7e2566782a";
 
-  const url = `http://api.openweathermap.org/data/2.5/weather?q=${loc}&APPID=${apiKey}`;
-
-  const retrieveWeatherData = new Promise((resolve, reject) => {
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${loc}&APPID=${apiKey}`;
     const retrievedData = fetch(url, { mode: "cors" });
     if (retrievedData) {
       resolve(retrievedData);
-      // returns the retrieved data as a promise
+      // return the retrieved data as a promise
     } else reject("bad data");
-    //  returns the string "bad data"
+    //  return the string "bad data"
   });
+  return requestWeatherData;
+};
 
-  retrieveWeatherData
+export const getWeatherData = () => {
+  const requestWeatherData = createPromise();
+  requestWeatherData
     .then((retrievedData) => {
-      return retrievedData.json();
-      // converts the retrieved JSON data to an enumerable object (similar to parse())
+      const retrievedDataObject = retrievedData.json();
+      return retrievedDataObject;
+      // convert the retrieved JSON data to an enumerable object)
     })
-    .then((retrievedData) => {
-      const processedWeatherData = processWeatherData(retrievedData);
+    .then((retrievedDataObject) => {
+      const processedWeatherData = processWeatherData(retrievedDataObject);
+      return processedWeatherData;
+      // extract useful info and save in an object
+    })
+    .then((processedWeatherData) => {
+      window.localStorage.setItem(
+        "currentWeatherData",
+        JSON.stringify(processedWeatherData)
+      );
+      // save processed data to local storage
       return processedWeatherData;
     })
     .then((processedWeatherData) => {
       renderWeatherData(processedWeatherData);
+      return processedWeatherData;
+      // update the DOM with properties from that object
     })
     .catch((error) => {
       console.log(error);
