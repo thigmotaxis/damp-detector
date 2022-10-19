@@ -35,32 +35,63 @@ import { callAPI } from "./storage.js";
       <div class="lowTemp">L: --</div>
     </div>
     <ul class="fiveDayForecast">
-      <li class="forecastContainer">
-        <div>Day 1</div>
-        <img class="weatherIcon" alt="sunny" />
-        <div>H: X° L: Y°</div>
-      </li>
-      <li class="forecastContainer">
-        <div>Day 2</div>
-        <img class="weatherIcon" alt="cloudy" />
-        <div>H: X° L: Y°</div>
-      </li>
-      <li class="forecastContainer">
-        <div>Day 3</div>
-        <img class="weatherIcon" alt="partly cloudy" />
-        <div>H: X° L: Y°</div>
-      </li>
-      <li class="forecastContainer">
-        <div>Day 4</div>
-        <img class="weatherIcon" alt="rainy" />
-        <div>H: X° L: Y°</div>
-      </li>
-      <li class="forecastContainer">
-        <div>Day 5</div>
-        <img class="weatherIcon" alt="sunny" />
-        <div>H: X° L: Y°</div>
-      </li>
-    </ul>
+        <li class="forecastContainer">
+          <div class="day0">Today</div>
+          <img
+            class="weatherIcon"
+            alt="sunny"
+          />
+          <div class="day0Range">H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div class="day1">Day 1</div>
+          <img
+            class="weatherIcon"
+            alt="cloudy"
+          />
+          <div class="day1Range">H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div class="day2">Day 2</div>
+          <img
+            class="weatherIcon"
+            alt="partly cloudy"
+          />
+          <div class="day2Range">H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div class="day3">Day 3</div>
+          <img
+            class="weatherIcon"
+            alt="rainy"
+          />
+          <div class="day3Range">H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div class="day4">Day 4</div>
+          <img
+            class="weatherIcon"
+            alt="sunny"
+          />
+          <div class="day4Range">H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div class="day5">Day 5</div>
+          <img
+            class="weatherIcon"
+            alt="sunny"
+          />
+          <div class="day5Range">H: X° L: Y°</div>
+        </li>
+        <li class="forecastContainer">
+          <div class="day6">Day 6</div>
+          <img
+            class="weatherIcon"
+            alt="sunny"
+          />
+          <div class="day6Range">H: X° L: Y°</div>
+        </li>
+      </ul>
 
     <div class="otherWeatherInfo">
     <div class="other windSpeed">--</div>
@@ -90,6 +121,8 @@ import { callAPI } from "./storage.js";
     partlyCloudyIcon,
     rainyIcon,
     sunnyIcon,
+    sunnyIcon,
+    partlyCloudyIcon,
   ];
 
   const weatherIcons = document.querySelectorAll(".weatherIcon");
