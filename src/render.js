@@ -30,11 +30,8 @@ import { callAPI } from "./storage.js";
         <button class="submit hidden">Submit</button>
     </div>
     <div class="conditions"></div>
-    <div class="tempRangeContainer">
-      <div class="highTemp">H: --</div>
-      <div class="lowTemp">L: --</div>
-    </div>
-    <ul class="fiveDayForecast">
+   
+    <ul class="sevenDayForecast">
         <li class="forecastContainer">
           <div class="day0">Today</div>
           <img
@@ -141,18 +138,46 @@ import { callAPI } from "./storage.js";
 
 export const domCache = {
   location: document.querySelector(".location"),
-  temperature: document.querySelector(".temp"),
-  toggleTempScale: document.querySelector(".toggleTempScale"),
   changeLocation: document.querySelector(".changeLocation"),
   locationInput: document.querySelector(".locationInput"),
   submitLocation: document.querySelector(".submit"),
-  conditions: document.querySelector(".conditions"),
-  highTemperature: document.querySelector(".highTemp"),
-  lowTemperature: document.querySelector(".lowTemp"),
-  windSpeed: document.querySelector(".windSpeed"),
-  windDirection: document.querySelector(".windDirection"),
-  humidity: document.querySelector(".humidity"),
-  feelsLike: document.querySelector(".feelsLike"),
+  toggleTempScale: document.querySelector(".toggleTempScale"),
+
+  day0: {
+    temperature: document.querySelector(".temp"),
+    tempRange: document.querySelector(".day0Range"),
+    conditions: document.querySelector(".conditions"),
+    highTemperature: document.querySelector(".highTemp"),
+    lowTemperature: document.querySelector(".lowTemp"),
+    windSpeed: document.querySelector(".windSpeed"),
+    windDirection: document.querySelector(".windDirection"),
+    humidity: document.querySelector(".humidity"),
+    feelsLike: document.querySelector(".feelsLike"),
+  },
+  day1: {
+    dayName: document.querySelector(".day1"),
+    tempRange: document.querySelector(".day1Range"),
+  },
+  day2: {
+    dayName: document.querySelector(".day2"),
+    tempRange: document.querySelector(".day2Range"),
+  },
+  day3: {
+    dayName: document.querySelector(".day3"),
+    tempRange: document.querySelector(".day3Range"),
+  },
+  day4: {
+    dayName: document.querySelector(".day4"),
+    tempRange: document.querySelector(".day4Range"),
+  },
+  day5: {
+    dayName: document.querySelector(".day5"),
+    tempRange: document.querySelector(".day5Range"),
+  },
+  day6: {
+    dayName: document.querySelector(".day6"),
+    tempRange: document.querySelector(".day1Range"),
+  },
 };
 
 export const modifyDOM = (() => {
@@ -164,19 +189,19 @@ export const modifyDOM = (() => {
     if (localStorage.getItem("tempScale") === "F") {
       localStorage.setItem("tempScale", "C");
       domCache.toggleTempScale.innerHTML = "Display Farenheight";
-      domCache.temperature.innerHTML = processedWeatherData.tempC;
-      //   domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
-      //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
-      // These will get reinstated when I integrate forecast data
-      domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
+      domCache.day0.temperature.innerHTML = processedWeatherData.current.tempC;
+      domCache.day0.tempRange.innerHTML =
+        processedWeatherData.current.tempRangeC;
+      domCache.day0.feelsLike.innerHTML =
+        processedWeatherData.current.feelsLikeC;
     } else {
       localStorage.setItem("tempScale", "F");
       domCache.toggleTempScale.innerHTML = "Display Celsius";
-      domCache.temperature.innerHTML = processedWeatherData.tempF;
-      //   domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
-      //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
-      // These will get reinstated when I integrate forecast data
-      domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
+      domCache.day0.temperature.innerHTML = processedWeatherData.current.tempF;
+      domCache.day0.tempRange.innerHTML =
+        processedWeatherData.current.tempRangeF;
+      domCache.day0.feelsLike.innerHTML =
+        processedWeatherData.current.feelsLikeF;
     }
   };
 
@@ -204,22 +229,27 @@ export const modifyDOM = (() => {
     domCache.location.innerHTML = JSON.parse(
       window.localStorage.getItem("location")
     );
-    domCache.conditions.innerHTML = processedWeatherData.conditions;
-    domCache.windSpeed.innerHTML = processedWeatherData.windSpeed;
-    domCache.windDirection.innerHTML = processedWeatherData.windDirection;
-    domCache.humidity.innerHTML = processedWeatherData.humidity;
+    domCache.day0.conditions.innerHTML =
+      processedWeatherData.current.conditions;
+    domCache.day0.windSpeed.innerHTML = processedWeatherData.current.windSpeed;
+    domCache.day0.windDirection.innerHTML =
+      processedWeatherData.current.windDirection;
+    domCache.day0.humidity.innerHTML = processedWeatherData.current.humidity;
     if (window.localStorage.getItem("tempScale") === "F") {
-      domCache.temperature.innerHTML = processedWeatherData.tempF;
+      domCache.day0.temperature.innerHTML = processedWeatherData.current.tempF;
+      domCache.day0.tempRange.innerHTML =
+        processedWeatherData.current.tempRangeF;
       //   domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
       //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
       // These will get reinstated when I integrate forecast data
-      domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
+      domCache.day0.feelsLike.innerHTML =
+        processedWeatherData.current.feelsLikeF;
     } else {
-      domCache.temperature.innerHTML = processedWeatherData.tempC;
-      //   domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
-      //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
-      // These will get reinstated when I integrate forecast data
-      domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
+      domCache.day0.temperature.innerHTML = processedWeatherData.current.tempC;
+      domCache.day0.tempRange.innerHTML =
+        processedWeatherData.current.tempRangeC;
+      domCache.day0.feelsLike.innerHTML =
+        processedWeatherData.current.feelsLikeC;
     }
   };
 

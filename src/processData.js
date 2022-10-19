@@ -10,31 +10,20 @@ export const getCoordinates = (data) => {
 
 export const processWeatherData = (data) => {
   const processedWeatherData = {
-    location: data.name,
-    tempF: `${Math.round(((data.current.temp - 273.15) * 9) / 5 + 32)}° F`,
-    // highTempF: `H: ${Math.round(
-    //   ((data.current.temp_max - 273.15) * 9) / 5 + 32
-    // )}° F`,
-    // lowTempF: `L: ${Math.round(
-    //   ((data.current.temp_min - 273.15) * 9) / 5 + 32
-    // )}° F`,
-    // These will get reinstated when I integrate forecast data
-    feelsLikeF: `Feels Like: ${Math.round(
-      ((data.current.feels_like - 273.15) * 9) / 5 + 32
-    )}° F`,
-    tempC: `${Math.round(data.current.temp - 273.15)}° C`,
-    // highTempC: `H: ${Math.round(data.current.temp_max - 273.15)}° C`,
-    // lowTempC: `L: ${Math.round(data.current.temp_min - 273.15)}° C`,
-    // These will get reinstated when I integrate forecast data
-    feelsLikeC: `Feels Like: ${Math.round(
-      data.current.feels_like - 273.15
-    )}° C`,
-    conditions: data.current.weather[0].main,
-    windSpeed: `Wind Speed: ${Math.round(
-      data.current.wind_speed * 2.23694
-    )} mph`,
-    windDirection: `Wind Direction:
-      ${
+    current: {
+      tempF: `${Math.round(((data.current.temp - 273.15) * 9) / 5 + 32)}° F`,
+      feelsLikeF: `Feels Like: ${Math.round(
+        ((data.current.feels_like - 273.15) * 9) / 5 + 32
+      )}° F`,
+      tempC: `${Math.round(data.current.temp - 273.15)}° C`,
+      feelsLikeC: `Feels Like: ${Math.round(
+        data.current.feels_like - 273.15
+      )}° C`,
+      conditions: data.current.weather[0].main,
+      windSpeed: `Wind Speed: ${Math.round(
+        data.current.wind_speed * 2.23694
+      )} mph`,
+      windDirection: `Wind Direction: ${
         data.current.wind_deg >= 337.5 || data.current.wind_deg <= 22.5
           ? `${data.current.wind_deg}° N`
           : data.current.wind_deg > 22.5 && data.current.wind_deg <= 67.5
@@ -51,8 +40,25 @@ export const processWeatherData = (data) => {
           ? `${data.current.wind_deg}° W`
           : `${data.current.wind_deg}° NW`
       }`,
-    humidity: `Humidity: ${data.current.humidity}%`,
+      humidity: `Humidity: ${data.current.humidity}%`,
+      dayName: "",
+      tempRangeF: `H: ${Math.round(
+        ((data.daily[0].temp.max - 273.15) * 9) / 5 + 32
+      )}° F  L: ${Math.round(
+        ((data.daily[0].temp.min - 273.15) * 9) / 5 + 32
+      )}° F`,
+      tempRangeC: `H: ${Math.round(
+        data.daily[0].temp.max - 273.15
+      )}° C  L: ${Math.round(data.daily[0].temp.min - 273.15)}° C`,
+    },
+    day1: { dayName: "", tempRange: "" },
+    day2: { dayName: "", tempRange: "" },
+    day3: { dayName: "", tempRange: "" },
+    day4: { dayName: "", tempRange: "" },
+    day5: { dayName: "", tempRange: "" },
+    day6: { dayName: "", tempRange: "" },
   };
   console.log(data);
+  console.log(processedWeatherData);
   return processedWeatherData;
 };
