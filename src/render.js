@@ -176,7 +176,7 @@ export const domCache = {
   },
   day6: {
     dayName: document.querySelector(".day6"),
-    tempRange: document.querySelector(".day1Range"),
+    tempRange: document.querySelector(".day6Range"),
   },
 };
 
@@ -189,19 +189,39 @@ export const modifyDOM = (() => {
     if (localStorage.getItem("tempScale") === "F") {
       localStorage.setItem("tempScale", "C");
       domCache.toggleTempScale.innerHTML = "Display Farenheight";
+
+      //   update today's temps
       domCache.day0.temperature.innerHTML = processedWeatherData.current.tempC;
       domCache.day0.tempRange.innerHTML =
         processedWeatherData.current.tempRangeC;
       domCache.day0.feelsLike.innerHTML =
         processedWeatherData.current.feelsLikeC;
+
+      // update forecast temps
+      domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeC;
+      domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeC;
+      domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeC;
+      domCache.day4.tempRange.innerHTML = processedWeatherData.day4.tempRangeC;
+      domCache.day5.tempRange.innerHTML = processedWeatherData.day5.tempRangeC;
+      domCache.day6.tempRange.innerHTML = processedWeatherData.day6.tempRangeC;
     } else {
       localStorage.setItem("tempScale", "F");
       domCache.toggleTempScale.innerHTML = "Display Celsius";
+
+      //   update today's temps
       domCache.day0.temperature.innerHTML = processedWeatherData.current.tempF;
       domCache.day0.tempRange.innerHTML =
         processedWeatherData.current.tempRangeF;
       domCache.day0.feelsLike.innerHTML =
         processedWeatherData.current.feelsLikeF;
+
+      // update forecast temps
+      domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeF;
+      domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeF;
+      domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeF;
+      domCache.day4.tempRange.innerHTML = processedWeatherData.day4.tempRangeF;
+      domCache.day5.tempRange.innerHTML = processedWeatherData.day5.tempRangeF;
+      domCache.day6.tempRange.innerHTML = processedWeatherData.day6.tempRangeF;
     }
   };
 
@@ -239,17 +259,30 @@ export const modifyDOM = (() => {
       domCache.day0.temperature.innerHTML = processedWeatherData.current.tempF;
       domCache.day0.tempRange.innerHTML =
         processedWeatherData.current.tempRangeF;
-      //   domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
-      //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
-      // These will get reinstated when I integrate forecast data
       domCache.day0.feelsLike.innerHTML =
         processedWeatherData.current.feelsLikeF;
+
+      // render forecast temps
+      domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeC;
+      domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeC;
+      domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeC;
+      domCache.day4.tempRange.innerHTML = processedWeatherData.day4.tempRangeC;
+      domCache.day5.tempRange.innerHTML = processedWeatherData.day5.tempRangeC;
+      domCache.day6.tempRange.innerHTML = processedWeatherData.day6.tempRangeC;
     } else {
       domCache.day0.temperature.innerHTML = processedWeatherData.current.tempC;
       domCache.day0.tempRange.innerHTML =
         processedWeatherData.current.tempRangeC;
       domCache.day0.feelsLike.innerHTML =
         processedWeatherData.current.feelsLikeC;
+
+      // render forecast temps
+      domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeF;
+      domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeF;
+      domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeF;
+      domCache.day4.tempRange.innerHTML = processedWeatherData.day4.tempRangeF;
+      domCache.day5.tempRange.innerHTML = processedWeatherData.day5.tempRangeF;
+      domCache.day6.tempRange.innerHTML = processedWeatherData.day6.tempRangeF;
     }
   };
 

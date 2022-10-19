@@ -16,6 +16,14 @@ export const processWeatherData = (data) => {
         ((data.current.feels_like - 273.15) * 9) / 5 + 32
       )}° F`,
       tempC: `${Math.round(data.current.temp - 273.15)}° C`,
+      tempRangeF: `H: ${Math.round(
+        ((data.daily[0].temp.max - 273.15) * 9) / 5 + 32
+      )}° F  L: ${Math.round(
+        ((data.daily[0].temp.min - 273.15) * 9) / 5 + 32
+      )}° F`,
+      tempRangeC: `H: ${Math.round(
+        data.daily[0].temp.max - 273.15
+      )}° C  L: ${Math.round(data.daily[0].temp.min - 273.15)}° C`,
       feelsLikeC: `Feels Like: ${Math.round(
         data.current.feels_like - 273.15
       )}° C`,
@@ -41,22 +49,73 @@ export const processWeatherData = (data) => {
           : `${data.current.wind_deg}° NW`
       }`,
       humidity: `Humidity: ${data.current.humidity}%`,
+    },
+    day1: {
       dayName: "",
       tempRangeF: `H: ${Math.round(
-        ((data.daily[0].temp.max - 273.15) * 9) / 5 + 32
+        ((data.daily[1].temp.max - 273.15) * 9) / 5 + 32
       )}° F  L: ${Math.round(
-        ((data.daily[0].temp.min - 273.15) * 9) / 5 + 32
+        ((data.daily[1].temp.min - 273.15) * 9) / 5 + 32
       )}° F`,
       tempRangeC: `H: ${Math.round(
-        data.daily[0].temp.max - 273.15
-      )}° C  L: ${Math.round(data.daily[0].temp.min - 273.15)}° C`,
+        data.daily[1].temp.max - 273.15
+      )}° C  L: ${Math.round(data.daily[1].temp.min - 273.15)}° C`,
     },
-    day1: { dayName: "", tempRange: "" },
-    day2: { dayName: "", tempRange: "" },
-    day3: { dayName: "", tempRange: "" },
-    day4: { dayName: "", tempRange: "" },
-    day5: { dayName: "", tempRange: "" },
-    day6: { dayName: "", tempRange: "" },
+    day2: {
+      dayName: "",
+      tempRangeF: `H: ${Math.round(
+        ((data.daily[2].temp.max - 273.15) * 9) / 5 + 32
+      )}° F  L: ${Math.round(
+        ((data.daily[2].temp.min - 273.15) * 9) / 5 + 32
+      )}° F`,
+      tempRangeC: `H: ${Math.round(
+        data.daily[2].temp.max - 273.15
+      )}° C  L: ${Math.round(data.daily[2].temp.min - 273.15)}° C`,
+    },
+    day3: {
+      dayName: "",
+      tempRangeF: `H: ${Math.round(
+        ((data.daily[3].temp.max - 273.15) * 9) / 5 + 32
+      )}° F  L: ${Math.round(
+        ((data.daily[3].temp.min - 273.15) * 9) / 5 + 32
+      )}° F`,
+      tempRangeC: `H: ${Math.round(
+        data.daily[3].temp.max - 273.15
+      )}° C  L: ${Math.round(data.daily[3].temp.min - 273.15)}° C`,
+    },
+    day4: {
+      dayName: "",
+      tempRangeF: `H: ${Math.round(
+        ((data.daily[4].temp.max - 273.15) * 9) / 5 + 32
+      )}° F  L: ${Math.round(
+        ((data.daily[4].temp.min - 273.15) * 9) / 5 + 32
+      )}° F`,
+      tempRangeC: `H: ${Math.round(
+        data.daily[4].temp.max - 273.15
+      )}° C  L: ${Math.round(data.daily[4].temp.min - 273.15)}° C`,
+    },
+    day5: {
+      dayName: "",
+      tempRangeF: `H: ${Math.round(
+        ((data.daily[5].temp.max - 273.15) * 9) / 5 + 32
+      )}° F  L: ${Math.round(
+        ((data.daily[5].temp.min - 273.15) * 9) / 5 + 32
+      )}° F`,
+      tempRangeC: `H: ${Math.round(
+        data.daily[5].temp.max - 273.15
+      )}° C  L: ${Math.round(data.daily[5].temp.min - 273.15)}° C`,
+    },
+    day6: {
+      dayName: "",
+      tempRangeF: `H: ${Math.round(
+        ((data.daily[6].temp.max - 273.15) * 9) / 5 + 32
+      )}° F  L: ${Math.round(
+        ((data.daily[6].temp.min - 273.15) * 9) / 5 + 32
+      )}° F`,
+      tempRangeC: `H: ${Math.round(
+        data.daily[6].temp.max - 273.15
+      )}° C  L: ${Math.round(data.daily[6].temp.min - 273.15)}° C`,
+    },
   };
   console.log(data);
   console.log(processedWeatherData);
