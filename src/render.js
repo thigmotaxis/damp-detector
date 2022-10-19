@@ -5,6 +5,7 @@ import sunnyIcon from "./images/sunnyIcon-24w.png";
 import ghLogo from "./images/gitHubLogo-24w.png";
 import copyright from "./images/copyright-24w.png";
 import { callAPI } from "./storage.js";
+import { getLocalDays } from "./processData";
 
 // BEGIN RENDERING OF STATIC ELEMENTS
 
@@ -144,6 +145,7 @@ export const domCache = {
   toggleTempScale: document.querySelector(".toggleTempScale"),
 
   day0: {
+    dayName: document.querySelector(".day0"),
     temperature: document.querySelector(".temp"),
     tempRange: document.querySelector(".day0Range"),
     conditions: document.querySelector(".conditions"),
@@ -249,12 +251,30 @@ export const modifyDOM = (() => {
     domCache.location.innerHTML = JSON.parse(
       window.localStorage.getItem("location")
     );
+
+    // render current conditions
     domCache.day0.conditions.innerHTML =
       processedWeatherData.current.conditions;
     domCache.day0.windSpeed.innerHTML = processedWeatherData.current.windSpeed;
     domCache.day0.windDirection.innerHTML =
       processedWeatherData.current.windDirection;
     domCache.day0.humidity.innerHTML = processedWeatherData.current.humidity;
+
+    // render forecast day names
+    const dayNames = getLocalDays();
+    const dayNameElements = [
+      domCache.day0,
+      domCache.day1,
+      domCache.day2,
+      domCache.day3,
+      domCache.day4,
+      domCache.day5,
+      domCache.day6,
+    ];
+    for (let i = 0; i < dayNames.length; i++) {
+      dayNameElements[i].dayName.innerHTML = dayNames[i];
+    }
+
     if (window.localStorage.getItem("tempScale") === "F") {
       domCache.day0.temperature.innerHTML = processedWeatherData.current.tempF;
       domCache.day0.tempRange.innerHTML =
@@ -262,7 +282,8 @@ export const modifyDOM = (() => {
       domCache.day0.feelsLike.innerHTML =
         processedWeatherData.current.feelsLikeF;
 
-      // render forecast temps
+      // render forecast data
+
       domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeC;
       domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeC;
       domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeC;
@@ -276,7 +297,7 @@ export const modifyDOM = (() => {
       domCache.day0.feelsLike.innerHTML =
         processedWeatherData.current.feelsLikeC;
 
-      // render forecast temps
+      // render forecast data
       domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeF;
       domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeF;
       domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeF;
