@@ -271,39 +271,40 @@ export const modifyDOM = (() => {
       domCache.day5,
       domCache.day6,
     ];
+    const processedWeatherDataObjects = [
+      processedWeatherData.current,
+      processedWeatherData.day1,
+      processedWeatherData.day2,
+      processedWeatherData.day3,
+      processedWeatherData.day4,
+      processedWeatherData.day5,
+      processedWeatherData.day6,
+    ];
+
     for (let i = 0; i < dayNames.length; i++) {
       dayNameElements[i].dayName.innerHTML = dayNames[i];
     }
 
     if (window.localStorage.getItem("tempScale") === "F") {
       domCache.day0.temperature.innerHTML = processedWeatherData.current.tempF;
-      domCache.day0.tempRange.innerHTML =
-        processedWeatherData.current.tempRangeF;
       domCache.day0.feelsLike.innerHTML =
         processedWeatherData.current.feelsLikeF;
 
-      // render forecast data
-
-      domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeC;
-      domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeC;
-      domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeC;
-      domCache.day4.tempRange.innerHTML = processedWeatherData.day4.tempRangeC;
-      domCache.day5.tempRange.innerHTML = processedWeatherData.day5.tempRangeC;
-      domCache.day6.tempRange.innerHTML = processedWeatherData.day6.tempRangeC;
+      // render farenheight temp range data
+      for (let i = 0; i < dayNameElements.length; i++) {
+        dayNameElements[i].tempRange.innerHTML =
+          processedWeatherDataObjects[i].tempRangeF;
+      }
     } else {
       domCache.day0.temperature.innerHTML = processedWeatherData.current.tempC;
-      domCache.day0.tempRange.innerHTML =
-        processedWeatherData.current.tempRangeC;
       domCache.day0.feelsLike.innerHTML =
         processedWeatherData.current.feelsLikeC;
 
-      // render forecast data
-      domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeF;
-      domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeF;
-      domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeF;
-      domCache.day4.tempRange.innerHTML = processedWeatherData.day4.tempRangeF;
-      domCache.day5.tempRange.innerHTML = processedWeatherData.day5.tempRangeF;
-      domCache.day6.tempRange.innerHTML = processedWeatherData.day6.tempRangeF;
+      // render celsius temp range data
+      for (let i = 0; i < dayNameElements.length; i++) {
+        dayNameElements[i].tempRange.innerHTML =
+          processedWeatherDataObjects[i].tempRangeC;
+      }
     }
   };
 
