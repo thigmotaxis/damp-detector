@@ -19,8 +19,14 @@ import copyright from "./images/copyright-24w.png";
     <div class="location">--</div>
     <div class="temp">--</div>
     <div class="buttonContainer">
+    <button class="toggleTempScale">Display Celsius</button>
       <button class="changeLocation">Change Location</button>
-      <button class="toggleTempScale">Display Celsius</button>
+      <input
+          type="text"
+          placeholder="Enter a city, state, or country"
+          class="locationInput hidden"
+        />
+        <button class="submit hidden">Submit</button>
     </div>
     <div class="conditions"></div>
     <div class="tempRangeContainer">
@@ -103,6 +109,9 @@ const domCache = {
   location: document.querySelector(".location"),
   temperature: document.querySelector(".temp"),
   toggleTempScale: document.querySelector(".toggleTempScale"),
+  changeLocation: document.querySelector(".changeLocation"),
+  locationInput: document.querySelector(".locationInput"),
+  submitLocation: document.querySelector(".submit"),
   conditions: document.querySelector(".conditions"),
   highTemperature: document.querySelector(".highTemp"),
   lowTemperature: document.querySelector(".lowTemp"),
@@ -134,9 +143,23 @@ const toggleTempScale = () => {
   }
 };
 
+const changeLocation = () => {
+  domCache.changeLocation.classList.add("hidden");
+  domCache.locationInput.classList.remove("hidden");
+  domCache.submitLocation.classList.remove("hidden");
+};
+
+const updateDisplay = () => {
+  domCache.changeLocation.classList.remove("hidden");
+  domCache.locationInput.classList.add("hidden");
+  domCache.submitLocation.classList.add("hidden");
+};
+
 // CREATE HANDLER FUNCTIONS
 (() => {
   domCache.toggleTempScale.addEventListener("click", toggleTempScale);
+  domCache.changeLocation.addEventListener("click", changeLocation);
+  domCache.submitLocation.addEventListener("click", updateDisplay);
 })();
 
 export const renderWeatherData = (processedWeatherData) => {

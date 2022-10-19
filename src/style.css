@@ -181,6 +181,14 @@ header {
   display: flex;
 }
 
+.changeLocation {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 .forecastContainer {
   display: flex;
   align-items: center;
