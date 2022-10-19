@@ -4,6 +4,7 @@ import rainyIcon from "./images/rainyIcon-24w.png";
 import sunnyIcon from "./images/sunnyIcon-24w.png";
 import ghLogo from "./images/gitHubLogo-24w.png";
 import copyright from "./images/copyright-24w.png";
+import { callAPI } from "./storage.js";
 
 // BEGIN RENDERING OF STATIC ELEMENTS
 
@@ -144,24 +145,25 @@ export const modifyDOM = (() => {
     }
   };
 
-  const changeLocation = () => {
+  const showInputField = () => {
     domCache.changeLocation.classList.add("hidden");
     domCache.locationInput.classList.remove("hidden");
     domCache.submitLocation.classList.remove("hidden");
   };
 
-  const updateDisplay = () => {
+  const hideInputField = () => {
     domCache.changeLocation.classList.remove("hidden");
     domCache.locationInput.classList.add("hidden");
     domCache.submitLocation.classList.add("hidden");
   };
 
   // CREATE HANDLER FUNCTIONS
-  (() => {
+  const createHandlerFunctions = () => {
     domCache.toggleTempScale.addEventListener("click", toggleTempScale);
-    domCache.changeLocation.addEventListener("click", changeLocation);
-    domCache.submitLocation.addEventListener("click", updateDisplay);
-  })();
+    domCache.changeLocation.addEventListener("click", showInputField);
+    domCache.submitLocation.addEventListener("click", hideInputField);
+    domCache.submitLocation.addEventListener("click", callAPI.getWeatherData);
+  };
 
   const renderWeatherData = (processedWeatherData) => {
     domCache.location.innerHTML = processedWeatherData.location;
@@ -182,5 +184,5 @@ export const modifyDOM = (() => {
     }
   };
 
-  return { renderWeatherData };
+  return { createHandlerFunctions, renderWeatherData };
 })();

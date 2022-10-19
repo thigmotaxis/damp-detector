@@ -11,10 +11,17 @@ import { processWeatherData } from "./processData";
 export const callAPI = (() => {
   const createPromise = (loc = "seattle") => {
     const requestWeatherData = new Promise((resolve, reject) => {
-      // const loc = "berlin";
-      // ^^default is a placeholder for function that will retrieve location from input field
-      // const loc = getLocation()
       const apiKey = "375ca8e8e974816fe616fd7e2566782a";
+      // use stored location as default if it exists
+      if (window.localStorage.getItem("currentWeatherData")) {
+        loc = JSON.parse(
+          window.localStorage.getItem("currentWeatherData")
+        ).location;
+      }
+      // use inputted location if input is not empty
+      if (domCache.locationInput.value !== "") {
+        loc = domCache.locationInput.value;
+      }
 
       const url = `http://api.openweathermap.org/data/2.5/weather?q=${loc}&APPID=${apiKey}`;
       const retrievedData = fetch(url, { mode: "cors" });
