@@ -194,10 +194,6 @@ header {
   align-items: center;
 }
 
-.tempRangeContainer {
-  display: flex;
-}
-
 .otherWeatherInfo {
   display: flex;
   flex-wrap: wrap;
