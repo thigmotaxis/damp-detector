@@ -1,4 +1,4 @@
 import "./style.css";
-import { getWeatherData } from "./storage.js";
+import { callAPI } from "./storage.js";
 
-getWeatherData();
+callAPI.getWeatherData();

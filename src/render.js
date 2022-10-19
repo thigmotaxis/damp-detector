@@ -105,7 +105,7 @@ import copyright from "./images/copyright-24w.png";
 
 // END RENDERING OF STATIC ELEMENTS
 
-const domCache = {
+export const domCache = {
   location: document.querySelector(".location"),
   temperature: document.querySelector(".temp"),
   toggleTempScale: document.querySelector(".toggleTempScale"),
@@ -121,62 +121,66 @@ const domCache = {
   feelsLike: document.querySelector(".feelsLike"),
 };
 
-const toggleTempScale = () => {
-  // retrieve locally stored weather data and update display
-  const processedWeatherData = JSON.parse(
-    window.localStorage.getItem("currentWeatherData")
-  );
-  if (localStorage.getItem("tempScale") === "F") {
-    localStorage.setItem("tempScale", "C");
-    domCache.toggleTempScale.innerHTML = "Display Farenheight";
-    domCache.temperature.innerHTML = processedWeatherData.tempC;
-    domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
-    domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
-    domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
-  } else {
-    localStorage.setItem("tempScale", "F");
-    domCache.toggleTempScale.innerHTML = "Display Celsius";
-    domCache.temperature.innerHTML = processedWeatherData.tempF;
-    domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
-    domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
-    domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
-  }
-};
+export const modifyDOM = (() => {
+  const toggleTempScale = () => {
+    // retrieve locally stored weather data and update display
+    const processedWeatherData = JSON.parse(
+      window.localStorage.getItem("currentWeatherData")
+    );
+    if (localStorage.getItem("tempScale") === "F") {
+      localStorage.setItem("tempScale", "C");
+      domCache.toggleTempScale.innerHTML = "Display Farenheight";
+      domCache.temperature.innerHTML = processedWeatherData.tempC;
+      domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
+      domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
+      domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
+    } else {
+      localStorage.setItem("tempScale", "F");
+      domCache.toggleTempScale.innerHTML = "Display Celsius";
+      domCache.temperature.innerHTML = processedWeatherData.tempF;
+      domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
+      domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+      domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
+    }
+  };
 
-const changeLocation = () => {
-  domCache.changeLocation.classList.add("hidden");
-  domCache.locationInput.classList.remove("hidden");
-  domCache.submitLocation.classList.remove("hidden");
-};
+  const changeLocation = () => {
+    domCache.changeLocation.classList.add("hidden");
+    domCache.locationInput.classList.remove("hidden");
+    domCache.submitLocation.classList.remove("hidden");
+  };
 
-const updateDisplay = () => {
-  domCache.changeLocation.classList.remove("hidden");
-  domCache.locationInput.classList.add("hidden");
-  domCache.submitLocation.classList.add("hidden");
-};
+  const updateDisplay = () => {
+    domCache.changeLocation.classList.remove("hidden");
+    domCache.locationInput.classList.add("hidden");
+    domCache.submitLocation.classList.add("hidden");
+  };
 
-// CREATE HANDLER FUNCTIONS
-(() => {
-  domCache.toggleTempScale.addEventListener("click", toggleTempScale);
-  domCache.changeLocation.addEventListener("click", changeLocation);
-  domCache.submitLocation.addEventListener("click", updateDisplay);
+  // CREATE HANDLER FUNCTIONS
+  (() => {
+    domCache.toggleTempScale.addEventListener("click", toggleTempScale);
+    domCache.changeLocation.addEventListener("click", changeLocation);
+    domCache.submitLocation.addEventListener("click", updateDisplay);
+  })();
+
+  const renderWeatherData = (processedWeatherData) => {
+    domCache.location.innerHTML = processedWeatherData.location;
+    domCache.conditions.innerHTML = processedWeatherData.conditions;
+    domCache.windSpeed.innerHTML = processedWeatherData.windSpeed;
+    domCache.windDirection.innerHTML = processedWeatherData.windDirection;
+    domCache.humidity.innerHTML = processedWeatherData.humidity;
+    if (window.localStorage.getItem("tempScale") === "F") {
+      domCache.temperature.innerHTML = processedWeatherData.tempF;
+      domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
+      domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+      domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
+    } else {
+      domCache.temperature.innerHTML = processedWeatherData.tempC;
+      domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
+      domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
+      domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
+    }
+  };
+
+  return { renderWeatherData };
 })();
-
-export const renderWeatherData = (processedWeatherData) => {
-  domCache.location.innerHTML = processedWeatherData.location;
-  domCache.conditions.innerHTML = processedWeatherData.conditions;
-  domCache.windSpeed.innerHTML = processedWeatherData.windSpeed;
-  domCache.windDirection.innerHTML = processedWeatherData.windDirection;
-  domCache.humidity.innerHTML = processedWeatherData.humidity;
-  if (window.localStorage.getItem("tempScale") === "F") {
-    domCache.temperature.innerHTML = processedWeatherData.tempF;
-    domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
-    domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
-    domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
-  } else {
-    domCache.temperature.innerHTML = processedWeatherData.tempC;
-    domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
-    domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
-    domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
-  }
-};
