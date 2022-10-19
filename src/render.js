@@ -132,15 +132,17 @@ export const modifyDOM = (() => {
       localStorage.setItem("tempScale", "C");
       domCache.toggleTempScale.innerHTML = "Display Farenheight";
       domCache.temperature.innerHTML = processedWeatherData.tempC;
-      domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
-      domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
+      //   domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
+      //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
+      // These will get reinstated when I integrate forecast data
       domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
     } else {
       localStorage.setItem("tempScale", "F");
       domCache.toggleTempScale.innerHTML = "Display Celsius";
       domCache.temperature.innerHTML = processedWeatherData.tempF;
-      domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
-      domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+      //   domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
+      //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+      // These will get reinstated when I integrate forecast data
       domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
     }
   };
@@ -166,20 +168,24 @@ export const modifyDOM = (() => {
   };
 
   const renderWeatherData = (processedWeatherData) => {
-    domCache.location.innerHTML = processedWeatherData.location;
+    domCache.location.innerHTML = JSON.parse(
+      window.localStorage.getItem("location")
+    );
     domCache.conditions.innerHTML = processedWeatherData.conditions;
     domCache.windSpeed.innerHTML = processedWeatherData.windSpeed;
     domCache.windDirection.innerHTML = processedWeatherData.windDirection;
     domCache.humidity.innerHTML = processedWeatherData.humidity;
     if (window.localStorage.getItem("tempScale") === "F") {
       domCache.temperature.innerHTML = processedWeatherData.tempF;
-      domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
-      domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+      //   domCache.highTemperature.innerHTML = processedWeatherData.highTempF;
+      //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempF;
+      // These will get reinstated when I integrate forecast data
       domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeF;
     } else {
       domCache.temperature.innerHTML = processedWeatherData.tempC;
-      domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
-      domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
+      //   domCache.highTemperature.innerHTML = processedWeatherData.highTempC;
+      //   domCache.lowTemperature.innerHTML = processedWeatherData.lowTempC;
+      // These will get reinstated when I integrate forecast data
       domCache.feelsLike.innerHTML = processedWeatherData.feelsLikeC;
     }
   };
