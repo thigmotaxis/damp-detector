@@ -1,4 +1,5 @@
-import { modifyDOM, domCache } from "./render";
+import { domCache } from "./render";
+import { modifyDOM } from "./modifyDOM";
 import { getCoordinates, processWeatherData } from "./processData";
 
 // SETS INITIAL LOCAL STORAGE VALUES IF ABSENT
@@ -16,7 +17,7 @@ export const callAPI = (() => {
       if (window.localStorage.getItem("location")) {
         loc = JSON.parse(window.localStorage.getItem("location"));
       }
-      // use inputted location if input is not empty
+      // prioritize inputted location if input field is not empty
       if (domCache.locationInput.value !== "") {
         loc = domCache.locationInput.value;
       }
@@ -59,7 +60,7 @@ export const callAPI = (() => {
           JSON.stringify(coordinates.location)
         );
         return coordinates;
-        // extract coordinates and save in an object
+        // extract coordinates and save in an object, save location name in local storage
       })
       .then((coordinates) => {
         const requestForecast = createForecastPromise(coordinates);
@@ -85,7 +86,7 @@ export const callAPI = (() => {
           })
           .then((processedWeatherData) => {
             modifyDOM.renderWeatherData(processedWeatherData);
-            return processedWeatherData;
+            modifyDOM.renderForecastData(processedWeatherData);
             // update the DOM with properties from that object
           });
       })
