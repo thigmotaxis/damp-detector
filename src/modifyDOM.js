@@ -1,6 +1,5 @@
 import { domCache } from "./render.js";
 import { callAPI } from "./storage.js";
-import { getLocalDays } from "./processData";
 import cloudyIcon from "./images/cloudyIcon-24w.png";
 import hazyIcon from "./images/hazyIcon-24w.png";
 import rainyIcon from "./images/rainyIcon-24w.png";
@@ -75,10 +74,8 @@ export const modifyDOM = (() => {
       domCache.day6,
     ];
 
-    const dayNames = getLocalDays();
-
     for (let i = 0; i < data.length; i++) {
-      dayNameElements[i].dayName.innerHTML = dayNames[i];
+      dayNameElements[i].dayName.innerHTML = data[i].dayName;
     }
 
     const weatherIcons = domCache.weatherIcons;

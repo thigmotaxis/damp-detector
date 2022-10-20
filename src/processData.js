@@ -10,19 +10,17 @@ export const getCoordinates = (data) => {
   return coordinates;
 };
 
-export const getLocalDays = () => {
+export const getLocalDayNames = () => {
   const localTimezoneOffset = JSON.parse(
     window.localStorage.getItem("currentWeatherData")
   ).localTimezoneOffset;
   const myTimezoneOffset = new Date().getTimezoneOffset() / 60;
-  const differential = localTimezoneOffset + myTimezoneOffset;
-  const localDate = add(new Date(), { hours: differential });
+  const timezoneDifferential = localTimezoneOffset + myTimezoneOffset;
+  const localDate = add(new Date(), { hours: timezoneDifferential });
   const localDay = localDate.getDay();
 
-  const days = ["Today"];
-
-  for (let i = 1; i < 7; i++) {
-    // i is initialized at 1 because we do not want to retrieve today's name and this seems cleaner than (let day = (localDay + i + 1))
+  const days = [];
+  for (let i = 0; i < 7; i++) {
     let day = (localDay + i) % 7; // % operand prevents error when day + i > 6
     const dayName =
       day === 0
@@ -40,7 +38,7 @@ export const getLocalDays = () => {
         : "Saturday";
     days.push(dayName);
   }
-
+  days[0] = "Today";
   return days;
 };
 
@@ -84,7 +82,6 @@ export const processCurrentWeatherData = (data) => {
 export const processDailyWeatherData = (data) => {
   class Day {
     constructor(dayObject, index) {
-      this.dayName = "dayName"; // PLACEHOLDER
       this.dailyConditions = dayObject.weather[0].main;
       this.tempRangeF = `H: ${Math.round(
         ((dayObject.temp.max - 273.15) * 9) / 5 + 32
@@ -95,9 +92,11 @@ export const processDailyWeatherData = (data) => {
     }
   }
 
+  let dayNames = getLocalDayNames();
   let dayObjects = [];
   for (let i = 0; i < 7; i++) {
     const day = new Day(data[i], i);
+    day.dayName = dayNames[i];
     dayObjects.push(day);
   }
   return dayObjects;
