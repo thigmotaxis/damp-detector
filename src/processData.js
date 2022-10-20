@@ -6,7 +6,7 @@ export const getCoordinates = (data) => {
     latitude: data[0].lat,
     longitude: data[0].lon,
   };
-  console.log(data);
+
   return coordinates;
 };
 
@@ -31,6 +31,7 @@ export const processWeatherData = (data) => {
         data.current.feels_like - 273.15
       )}° C`,
       conditions: data.current.weather[0].main,
+      dailyConditions: data.daily[0].weather[0].main,
       windSpeed: `Wind Speed: ${Math.round(
         data.current.wind_speed * 2.23694
       )} mph`,
@@ -55,8 +56,9 @@ export const processWeatherData = (data) => {
     },
     day1: {
       dayName: "",
+      dailyConditions: data.daily[1].weather[0].main,
       tempRangeF: `H: ${Math.round(
-        ((data.daily[1].temp.max - 273.15) * 9) / 5 + 32
+        ((data.daily[0].temp.max - 273.15) * 9) / 5 + 32
       )}° F  L: ${Math.round(
         ((data.daily[1].temp.min - 273.15) * 9) / 5 + 32
       )}° F`,
@@ -66,6 +68,7 @@ export const processWeatherData = (data) => {
     },
     day2: {
       dayName: "",
+      dailyConditions: data.daily[2].weather[0].main,
       tempRangeF: `H: ${Math.round(
         ((data.daily[2].temp.max - 273.15) * 9) / 5 + 32
       )}° F  L: ${Math.round(
@@ -77,6 +80,7 @@ export const processWeatherData = (data) => {
     },
     day3: {
       dayName: "",
+      dailyConditions: data.daily[3].weather[0].main,
       tempRangeF: `H: ${Math.round(
         ((data.daily[3].temp.max - 273.15) * 9) / 5 + 32
       )}° F  L: ${Math.round(
@@ -88,6 +92,7 @@ export const processWeatherData = (data) => {
     },
     day4: {
       dayName: "",
+      dailyConditions: data.daily[4].weather[0].main,
       tempRangeF: `H: ${Math.round(
         ((data.daily[4].temp.max - 273.15) * 9) / 5 + 32
       )}° F  L: ${Math.round(
@@ -99,6 +104,7 @@ export const processWeatherData = (data) => {
     },
     day5: {
       dayName: "",
+      dailyConditions: data.daily[5].weather[0].main,
       tempRangeF: `H: ${Math.round(
         ((data.daily[5].temp.max - 273.15) * 9) / 5 + 32
       )}° F  L: ${Math.round(
@@ -110,6 +116,7 @@ export const processWeatherData = (data) => {
     },
     day6: {
       dayName: "",
+      dailyConditions: data.daily[6].weather[0].main,
       tempRangeF: `H: ${Math.round(
         ((data.daily[6].temp.max - 273.15) * 9) / 5 + 32
       )}° F  L: ${Math.round(

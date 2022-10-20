@@ -1,6 +1,11 @@
 import { domCache } from "./render.js";
 import { callAPI } from "./storage.js";
 import { getLocalDays } from "./processData";
+import cloudyIcon from "./images/cloudyIcon-24w.png";
+import hazyIcon from "./images/hazyIcon-24w.png";
+import rainyIcon from "./images/rainyIcon-24w.png";
+import snowyIcon from "./images/snowyIcon-24w.png";
+import sunnyIcon from "./images/sunnyIcon-24w.png";
 
 export const modifyDOM = (() => {
   const toggleTempScale = () => {
@@ -115,8 +120,31 @@ export const modifyDOM = (() => {
     for (let i = 0; i < dayNames.length; i++) {
       dayNameElements[i].dayName.innerHTML = dayNames[i];
     }
+
+    // render forecast icons
+    const weatherIcons = domCache.weatherIcons;
+    weatherIcons.forEach((element, index) => {
+      const dailyConditions =
+        processedWeatherDataObjects[index].dailyConditions;
+      if (dailyConditions === "Clear") {
+        element.setAttribute("src", sunnyIcon);
+      }
+      if (dailyConditions === "Clouds") {
+        element.setAttribute("src", cloudyIcon);
+      }
+      if (dailyConditions === "Rain") {
+        element.setAttribute("src", rainyIcon);
+      }
+      if (dailyConditions === "Snow") {
+        element.setAttribute("src", snowyIcon);
+      }
+      if (dailyConditions === "Smoke") {
+        element.setAttribute("src", hazyIcon);
+      }
+    });
+
+    // render farenheight temp range data
     if (window.localStorage.getItem("tempScale") === "F") {
-      // render farenheight temp range data
       for (let i = 0; i < dayNameElements.length; i++) {
         dayNameElements[i].tempRange.innerHTML =
           processedWeatherDataObjects[i].tempRangeF;
