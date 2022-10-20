@@ -1,6 +1,7 @@
 import { domCache } from "./render";
 import { modifyDOM } from "./modifyDOM";
 import { getCoordinates, processWeatherData } from "./processData";
+import { processCurrentWeatherData, processDailyWeatherData } from "./test.js";
 
 // SETS INITIAL LOCAL STORAGE VALUES IF ABSENT
 (() => {
@@ -73,7 +74,17 @@ export const callAPI = (() => {
           .then((retrievedDataObject) => {
             const processedWeatherData =
               processWeatherData(retrievedDataObject);
-            return processedWeatherData;
+            // IN TESTING
+            const processedCurrent =
+              processCurrentWeatherData(retrievedDataObject);
+            console.log(processedCurrent);
+            const processedDaily = processDailyWeatherData(
+              retrievedDataObject.daily
+            );
+            console.log(processedDaily);
+
+            // ^^ IN TESTING
+            return processedWeatherData; // commented out for testing
             // extract relevant info and save in an object
           })
           .then((processedWeatherData) => {
