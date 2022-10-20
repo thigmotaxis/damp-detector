@@ -8,55 +8,22 @@ import snowyIcon from "./images/snowyIcon-24w.png";
 import sunnyIcon from "./images/sunnyIcon-24w.png";
 
 export const modifyDOM = (() => {
-  // IN TESTING
-
-  const toggleTempScaleTest = () => {
-    console.log("hi");
-  };
-
-  // ^^ IN TESTING
   const toggleTempScale = () => {
-    // retrieve locally stored weather data and update display
-    const processedWeatherData = JSON.parse(
+    const currentWeatherData = JSON.parse(
       window.localStorage.getItem("currentWeatherData")
+    );
+    const forecastWeatherData = JSON.parse(
+      window.localStorage.getItem("dailyForecast")
     );
     if (localStorage.getItem("tempScale") === "F") {
       localStorage.setItem("tempScale", "C");
       domCache.toggleTempScale.innerHTML = "Display Farenheight";
-
-      //   update today's temps
-      domCache.day0.temperature.innerHTML = processedWeatherData.current.tempC;
-      domCache.day0.tempRange.innerHTML =
-        processedWeatherData.current.tempRangeC;
-      domCache.day0.feelsLike.innerHTML =
-        processedWeatherData.current.feelsLikeC;
-
-      // update forecast temps
-      domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeC;
-      domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeC;
-      domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeC;
-      domCache.day4.tempRange.innerHTML = processedWeatherData.day4.tempRangeC;
-      domCache.day5.tempRange.innerHTML = processedWeatherData.day5.tempRangeC;
-      domCache.day6.tempRange.innerHTML = processedWeatherData.day6.tempRangeC;
     } else {
       localStorage.setItem("tempScale", "F");
       domCache.toggleTempScale.innerHTML = "Display Celsius";
-
-      //   update today's temps
-      domCache.day0.temperature.innerHTML = processedWeatherData.current.tempF;
-      domCache.day0.tempRange.innerHTML =
-        processedWeatherData.current.tempRangeF;
-      domCache.day0.feelsLike.innerHTML =
-        processedWeatherData.current.feelsLikeF;
-
-      // update forecast temps
-      domCache.day1.tempRange.innerHTML = processedWeatherData.day1.tempRangeF;
-      domCache.day2.tempRange.innerHTML = processedWeatherData.day2.tempRangeF;
-      domCache.day3.tempRange.innerHTML = processedWeatherData.day3.tempRangeF;
-      domCache.day4.tempRange.innerHTML = processedWeatherData.day4.tempRangeF;
-      domCache.day5.tempRange.innerHTML = processedWeatherData.day5.tempRangeF;
-      domCache.day6.tempRange.innerHTML = processedWeatherData.day6.tempRangeF;
     }
+    renderWeatherData(currentWeatherData);
+    renderForecastData(forecastWeatherData);
   };
 
   const showInputField = () => {
@@ -73,10 +40,7 @@ export const modifyDOM = (() => {
 
   // CREATE HANDLER FUNCTIONS
   const createHandlerFunctions = () => {
-    // IN TESTING
-    domCache.toggleTempScale.addEventListener("click", toggleTempScaleTest);
-    // ^^ IN TESTING
-    // domCache.toggleTempScale.addEventListener("click", toggleTempScale);  // COMMENTED OUT FOR TESTING
+    domCache.toggleTempScale.addEventListener("click", toggleTempScale);
     domCache.changeLocation.addEventListener("click", showInputField);
     domCache.submitLocation.addEventListener("click", hideInputField);
     domCache.submitLocation.addEventListener("click", callAPI.getWeatherData);
@@ -86,17 +50,17 @@ export const modifyDOM = (() => {
     domCache.location.innerHTML = JSON.parse(
       window.localStorage.getItem("location")
     );
-    domCache.day0.conditions.innerHTML = data.conditions;
-    domCache.day0.windSpeed.innerHTML = data.windSpeed;
-    domCache.day0.windDirection.innerHTML = data.windDirection;
-    domCache.day0.humidity.innerHTML = data.humidity;
+    domCache.conditions.innerHTML = data.conditions;
+    domCache.windSpeed.innerHTML = data.windSpeed;
+    domCache.windDirection.innerHTML = data.windDirection;
+    domCache.humidity.innerHTML = data.humidity;
 
     if (window.localStorage.getItem("tempScale") === "F") {
-      domCache.day0.temperature.innerHTML = data.tempF;
-      domCache.day0.feelsLike.innerHTML = data.feelsLikeF;
+      domCache.temperature.innerHTML = data.tempF;
+      domCache.feelsLike.innerHTML = data.feelsLikeF;
     } else {
-      domCache.day0.temperature.innerHTML = data.tempC;
-      domCache.day0.feelsLike.innerHTML = data.feelsLikeC;
+      domCache.temperature.innerHTML = data.tempC;
+      domCache.feelsLike.innerHTML = data.feelsLikeC;
     }
   };
 
