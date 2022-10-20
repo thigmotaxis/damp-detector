@@ -1,7 +1,10 @@
 import { domCache } from "./render";
 import { modifyDOM } from "./modifyDOM";
-import { getCoordinates } from "./processData";
-import { processCurrentWeatherData, processDailyWeatherData } from "./test.js";
+import {
+  getCoordinates,
+  processCurrentWeatherData,
+  processDailyWeatherData,
+} from "./processData";
 
 // SETS INITIAL LOCAL STORAGE VALUES IF ABSENT
 (() => {
