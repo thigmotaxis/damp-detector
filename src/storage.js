@@ -1,6 +1,6 @@
 import { domCache } from "./render";
 import { modifyDOM } from "./modifyDOM";
-import { getCoordinates, processWeatherData } from "./processData";
+import { getCoordinates } from "./processData";
 import { processCurrentWeatherData, processDailyWeatherData } from "./test.js";
 
 // SETS INITIAL LOCAL STORAGE VALUES IF ABSENT
@@ -72,32 +72,30 @@ export const callAPI = (() => {
             // convert the retrieved JSON data to an enumerable object)
           })
           .then((retrievedDataObject) => {
-            const processedWeatherData =
-              processWeatherData(retrievedDataObject);
-            // IN TESTING
             const processedCurrent =
               processCurrentWeatherData(retrievedDataObject);
-            console.log(processedCurrent);
             const processedDaily = processDailyWeatherData(
               retrievedDataObject.daily
             );
-            console.log(processedDaily);
-
-            // ^^ IN TESTING
-            return processedWeatherData; // commented out for testing
-            // extract relevant info and save in an object
+            return { processedCurrent, processedDaily };
+            // extract relevant info and save in two objects
           })
           .then((processedWeatherData) => {
             window.localStorage.setItem(
               "currentWeatherData",
-              JSON.stringify(processedWeatherData)
+              JSON.stringify(processedWeatherData.processedCurrent)
+            );
+
+            window.localStorage.setItem(
+              "dailyForecast",
+              JSON.stringify(processedWeatherData.processedDaily)
             );
             // save processed data to local storage
             return processedWeatherData;
           })
           .then((processedWeatherData) => {
-            modifyDOM.renderWeatherData(processedWeatherData);
-            modifyDOM.renderForecastData(processedWeatherData);
+            modifyDOM.renderWeatherData(processedWeatherData.processedCurrent);
+            modifyDOM.renderForecastData(processedWeatherData.processedDaily);
             // update the DOM with properties from that object
           });
       })

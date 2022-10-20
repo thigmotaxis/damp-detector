@@ -8,6 +8,13 @@ import snowyIcon from "./images/snowyIcon-24w.png";
 import sunnyIcon from "./images/sunnyIcon-24w.png";
 
 export const modifyDOM = (() => {
+  // IN TESTING
+
+  const toggleTempScaleTest = () => {
+    console.log("hi");
+  };
+
+  // ^^ IN TESTING
   const toggleTempScale = () => {
     // retrieve locally stored weather data and update display
     const processedWeatherData = JSON.parse(
@@ -66,38 +73,34 @@ export const modifyDOM = (() => {
 
   // CREATE HANDLER FUNCTIONS
   const createHandlerFunctions = () => {
-    domCache.toggleTempScale.addEventListener("click", toggleTempScale);
+    // IN TESTING
+    domCache.toggleTempScale.addEventListener("click", toggleTempScaleTest);
+    // ^^ IN TESTING
+    // domCache.toggleTempScale.addEventListener("click", toggleTempScale);  // COMMENTED OUT FOR TESTING
     domCache.changeLocation.addEventListener("click", showInputField);
     domCache.submitLocation.addEventListener("click", hideInputField);
     domCache.submitLocation.addEventListener("click", callAPI.getWeatherData);
   };
 
-  const renderWeatherData = (processedWeatherData) => {
+  const renderWeatherData = (data) => {
     domCache.location.innerHTML = JSON.parse(
       window.localStorage.getItem("location")
     );
-
-    // render current conditions
-    domCache.day0.conditions.innerHTML =
-      processedWeatherData.current.conditions;
-    domCache.day0.windSpeed.innerHTML = processedWeatherData.current.windSpeed;
-    domCache.day0.windDirection.innerHTML =
-      processedWeatherData.current.windDirection;
-    domCache.day0.humidity.innerHTML = processedWeatherData.current.humidity;
+    domCache.day0.conditions.innerHTML = data.conditions;
+    domCache.day0.windSpeed.innerHTML = data.windSpeed;
+    domCache.day0.windDirection.innerHTML = data.windDirection;
+    domCache.day0.humidity.innerHTML = data.humidity;
 
     if (window.localStorage.getItem("tempScale") === "F") {
-      domCache.day0.temperature.innerHTML = processedWeatherData.current.tempF;
-      domCache.day0.feelsLike.innerHTML =
-        processedWeatherData.current.feelsLikeF;
+      domCache.day0.temperature.innerHTML = data.tempF;
+      domCache.day0.feelsLike.innerHTML = data.feelsLikeF;
     } else {
-      domCache.day0.temperature.innerHTML = processedWeatherData.current.tempC;
-      domCache.day0.feelsLike.innerHTML =
-        processedWeatherData.current.feelsLikeC;
+      domCache.day0.temperature.innerHTML = data.tempC;
+      domCache.day0.feelsLike.innerHTML = data.feelsLikeC;
     }
   };
-  const renderForecastData = (processedWeatherData) => {
-    // render forecast day names
-    const dayNames = getLocalDays();
+
+  const renderForecastData = (data) => {
     const dayNameElements = [
       domCache.day0,
       domCache.day1,
@@ -107,25 +110,16 @@ export const modifyDOM = (() => {
       domCache.day5,
       domCache.day6,
     ];
-    const processedWeatherDataObjects = [
-      processedWeatherData.current,
-      processedWeatherData.day1,
-      processedWeatherData.day2,
-      processedWeatherData.day3,
-      processedWeatherData.day4,
-      processedWeatherData.day5,
-      processedWeatherData.day6,
-    ];
 
-    for (let i = 0; i < dayNames.length; i++) {
+    const dayNames = getLocalDays();
+
+    for (let i = 0; i < data.length; i++) {
       dayNameElements[i].dayName.innerHTML = dayNames[i];
     }
 
-    // render forecast icons
     const weatherIcons = domCache.weatherIcons;
     weatherIcons.forEach((element, index) => {
-      const dailyConditions =
-        processedWeatherDataObjects[index].dailyConditions;
+      const dailyConditions = data[index].dailyConditions;
       if (dailyConditions === "Clear") {
         element.setAttribute("src", sunnyIcon);
       }
@@ -146,17 +140,19 @@ export const modifyDOM = (() => {
     // render farenheight temp range data
     if (window.localStorage.getItem("tempScale") === "F") {
       for (let i = 0; i < dayNameElements.length; i++) {
-        dayNameElements[i].tempRange.innerHTML =
-          processedWeatherDataObjects[i].tempRangeF;
+        dayNameElements[i].tempRange.innerHTML = data[i].tempRangeF;
       }
     } else {
       // render celsius temp range data
       for (let i = 0; i < dayNameElements.length; i++) {
-        dayNameElements[i].tempRange.innerHTML =
-          processedWeatherDataObjects[i].tempRangeC;
+        dayNameElements[i].tempRange.innerHTML = data[i].tempRangeC;
       }
     }
   };
 
-  return { createHandlerFunctions, renderWeatherData, renderForecastData };
+  return {
+    createHandlerFunctions,
+    renderWeatherData,
+    renderForecastData,
+  };
 })();

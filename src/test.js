@@ -1,6 +1,6 @@
-// BEGIN TEST
 export const processCurrentWeatherData = (data) => {
   const currentWeatherObject = {
+    localTimezoneOffset: data.timezone_offset / 3600,
     tempF: `${Math.round(((data.current.temp - 273.15) * 9) / 5 + 32)}° F`,
     tempC: `${Math.round(data.current.temp - 273.15)}° C`,
     feelsLikeF: `Feels Like: ${Math.round(
@@ -37,7 +37,7 @@ export const processCurrentWeatherData = (data) => {
 
 export const processDailyWeatherData = (data) => {
   class Day {
-    constructor(dayObject) {
+    constructor(dayObject, index) {
       this.dayName = "dayName"; // PLACEHOLDER
       this.dailyConditions = dayObject.weather[0].main;
       this.tempRangeF = `H: ${Math.round(
@@ -46,19 +46,13 @@ export const processDailyWeatherData = (data) => {
       this.tempRangeC = `H: ${Math.round(
         dayObject.temp.max - 273.15
       )}° C  L: ${Math.round(dayObject.temp.min - 273.15)}° C`;
-      this.weatherIcon = "weatherIcon.png"; // PLACEHOLDER
-    }
-    displayDay(dayObject) {
-      console.log(dayObject); // PLACEHOLDER
     }
   }
 
   let dayObjects = [];
   for (let i = 0; i < 7; i++) {
-    const day = new Day(data[i]);
+    const day = new Day(data[i], i);
     dayObjects.push(day);
   }
   return dayObjects;
 };
-
-// END TEST
