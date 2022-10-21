@@ -49,10 +49,17 @@ export const modifyDOM = (() => {
     domCache.submitLocation.classList.add("hidden");
   };
 
+  const submitLocationViaEnterKey = (e) => {
+    if (e.keyCode === 13) {
+      domCache.submitLocation.click();
+    }
+  };
+
   // CREATE HANDLER FUNCTIONS
   const createHandlerFunctions = () => {
     domCache.toggleTempScale.addEventListener("click", toggleTempScale);
     domCache.changeLocation.addEventListener("click", showInputField);
+    domCache.locationInput.addEventListener("keyup", submitLocationViaEnterKey);
     domCache.submitLocation.addEventListener("click", hideInputField);
     domCache.submitLocation.addEventListener("click", callAPI.getWeatherData);
     window
