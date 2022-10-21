@@ -97,6 +97,12 @@ export const callAPI = (() => {
             return processedWeatherData;
           })
           .then((processedWeatherData) => {
+            // vv renderBackgroundImage WILL NEED TO BE RUN IN INDEX AS PART OF INITIAL SETUP - PROBABLY RENAME TO SOMETHING MORE DESCRIPTIVE
+            modifyDOM.renderBackgroundImage(
+              processedWeatherData.processedCurrent
+            );
+            // NEED A FUNCTION HERE OR IN renderBackgroundImage TO RUN THE NON-EVENT PORTIONS OF updateBackgroundImage SO THAT THE CORRECT IMAGE
+            // LOADS WHEN LOCATION IS CHANGED
             modifyDOM.renderWeatherData(processedWeatherData.processedCurrent);
             modifyDOM.renderForecastData(processedWeatherData.processedDaily);
             // update the DOM with properties from that object

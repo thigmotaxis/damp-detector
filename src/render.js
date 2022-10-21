@@ -123,6 +123,7 @@ import copyright from "./images/copyright-24w.png";
 // END RENDERING OF STATIC ELEMENTS
 
 export const domCache = {
+  html: document.querySelector("html"),
   location: document.querySelector(".location"),
   changeLocation: document.querySelector(".changeLocation"),
   locationInput: document.querySelector(".locationInput"),

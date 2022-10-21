@@ -128,6 +128,11 @@ html {
   box-sizing: border-box;
   background-color: navy;
   color: bisque;
+  height: 100vh;
+  background-image: url("images/clear-portrait-640w.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 a,
@@ -237,7 +242,12 @@ footer * {
 
 /* END FOOTER STYLES */
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
+  /* if this condition changes, update renderBackgroundImage in modifyDOM.js*/
+  html {
+    background-image: url("images/clear-landscape-1200w.jpg");
+  }
+
   header {
     display: flex;
   }

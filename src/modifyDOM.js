@@ -5,6 +5,18 @@ import hazyIcon from "./images/hazyIcon-24w.png";
 import rainyIcon from "./images/rainyIcon-24w.png";
 import snowyIcon from "./images/snowyIcon-24w.png";
 import sunnyIcon from "./images/sunnyIcon-24w.png";
+import clearPortrait from "./images/clear-portrait-640w.jpg";
+import clearLandscape from "./images/clear-landscape-1200w.jpg";
+import cloudsPortrait from "./images/clouds-portrait-640w.jpg";
+import cloudsLandscape from "./images/clouds-landscape-1200w.jpg";
+import fogPortrait from "./images/fog-portrait-640w.jpg";
+import fogLandscape from "./images/fog-landscape-1200w.jpg";
+import rainPortrait from "./images/rain-portrait-640w.jpg";
+import rainLandscape from "./images/rain-landscape-1200w.jpg";
+import smokePortrait from "./images/smoke-portrait-640w.jpg";
+import smokeLandscape from "./images/smoke-landscape-1200w.jpg";
+import snowPortrait from "./images/snow-portrait-640w.jpg";
+import snowLandscape from "./images/snow-landscape-1200w.jpg";
 
 export const modifyDOM = (() => {
   const toggleTempScale = () => {
@@ -43,6 +55,52 @@ export const modifyDOM = (() => {
     domCache.changeLocation.addEventListener("click", showInputField);
     domCache.submitLocation.addEventListener("click", hideInputField);
     domCache.submitLocation.addEventListener("click", callAPI.getWeatherData);
+  };
+  // CHECK CONDITIONS PROP AND LOAD BACKGROUND IMAGE BASED ON IT
+
+  const updateBackgroundImage = (e) => {
+    const conditions = JSON.parse(
+      window.localStorage.getItem("currentWeatherData")
+    ).conditions.toLowerCase();
+    const orientation = !e.matches ? "Portrait" : "Landscape";
+    const locationStrings = [
+      "clearPortrait",
+      "clearLandscape",
+      "cloudsPortrait",
+      "cloudsLandscape",
+      "fogPortrait",
+      "fogLandscape",
+      "rainPortrait",
+      "rainLandscape",
+      "smokePortrait",
+      "smokeLandscape",
+      "snowPortrait",
+      "snowLandscape",
+    ];
+    const fileLocations = [
+      clearPortrait,
+      clearLandscape,
+      cloudsPortrait,
+      cloudsLandscape,
+      fogPortrait,
+      fogLandscape,
+      rainPortrait,
+      rainLandscape,
+      smokePortrait,
+      smokeLandscape,
+      snowPortrait,
+      snowLandscape,
+    ];
+    for (let i = 0; i < locationStrings.length; i++) {
+      if (locationStrings[i] === conditions + orientation) {
+        domCache.html.style.backgroundImage = `url(${fileLocations[i]})`;
+        return;
+      }
+    }
+  };
+  const renderBackgroundImage = () => {
+    const mediaQuery = window.matchMedia("(min-width: 700px)");
+    mediaQuery.addEventListener("change", updateBackgroundImage);
   };
 
   const renderWeatherData = (data) => {
@@ -113,6 +171,7 @@ export const modifyDOM = (() => {
 
   return {
     createHandlerFunctions,
+    renderBackgroundImage,
     renderWeatherData,
     renderForecastData,
   };
