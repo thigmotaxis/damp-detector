@@ -55,14 +55,18 @@ export const modifyDOM = (() => {
     domCache.changeLocation.addEventListener("click", showInputField);
     domCache.submitLocation.addEventListener("click", hideInputField);
     domCache.submitLocation.addEventListener("click", callAPI.getWeatherData);
+    window
+      .matchMedia("(min-width: 700px)")
+      .addEventListener("change", renderBackgroundImage); // loads appropriate background image on screen resize
   };
-  // CHECK CONDITIONS PROP AND LOAD BACKGROUND IMAGE BASED ON IT
 
-  const updateBackgroundImage = (e) => {
+  // CHECK CONDITIONS PROP AND LOAD BACKGROUND IMAGE BASED ON IT
+  const renderBackgroundImage = () => {
     const conditions = JSON.parse(
       window.localStorage.getItem("currentWeatherData")
     ).conditions.toLowerCase();
-    const orientation = !e.matches ? "Portrait" : "Landscape";
+    const mediaQuery = window.matchMedia("(min-width: 700px)");
+    const orientation = !mediaQuery.matches ? "Portrait" : "Landscape";
     const locationStrings = [
       "clearPortrait",
       "clearLandscape",
@@ -97,10 +101,6 @@ export const modifyDOM = (() => {
         return;
       }
     }
-  };
-  const renderBackgroundImage = () => {
-    const mediaQuery = window.matchMedia("(min-width: 700px)");
-    mediaQuery.addEventListener("change", updateBackgroundImage);
   };
 
   const renderWeatherData = (data) => {
