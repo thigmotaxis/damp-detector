@@ -194,6 +194,12 @@ header {
   display: none;
 }
 
+.sevenDayForecast,
+.otherWeatherInfo {
+  background-color: rgba(39, 39, 39, 0.6);
+  border-radius: 20px;
+}
+
 .forecastContainer {
   display: flex;
   align-items: center;
