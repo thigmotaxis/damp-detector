@@ -9,8 +9,8 @@ import clearPortrait from "./images/clear-portrait-640w.jpg";
 import clearLandscape from "./images/clear-landscape-1200w.jpg";
 import cloudsPortrait from "./images/clouds-portrait-640w.jpg";
 import cloudsLandscape from "./images/clouds-landscape-1200w.jpg";
-import fogPortrait from "./images/fog-portrait-640w.jpg";
-import fogLandscape from "./images/fog-landscape-1200w.jpg";
+import hazePortrait from "./images/haze-portrait-640w.jpg";
+import hazeLandscape from "./images/haze-landscape-1200w.jpg";
 import rainPortrait from "./images/rain-portrait-640w.jpg";
 import rainLandscape from "./images/rain-landscape-1200w.jpg";
 import smokePortrait from "./images/smoke-portrait-640w.jpg";
@@ -79,8 +79,8 @@ export const modifyDOM = (() => {
       "clearLandscape",
       "cloudsPortrait",
       "cloudsLandscape",
-      "fogPortrait",
-      "fogLandscape",
+      "hazePortrait",
+      "hazeLandscape",
       "rainPortrait",
       "rainLandscape",
       "smokePortrait",
@@ -93,8 +93,8 @@ export const modifyDOM = (() => {
       clearLandscape,
       cloudsPortrait,
       cloudsLandscape,
-      fogPortrait,
-      fogLandscape,
+      hazePortrait,
+      hazeLandscape,
       rainPortrait,
       rainLandscape,
       smokePortrait,
