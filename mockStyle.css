@@ -194,6 +194,12 @@ header {
   align-items: center;
 }
 
+.dayRange {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .otherWeatherInfo {
   display: flex;
   flex-wrap: wrap;

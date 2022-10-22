@@ -83,12 +83,14 @@ export const processDailyWeatherData = (data) => {
   class Day {
     constructor(dayObject, index) {
       this.dailyConditions = dayObject.weather[0].main;
-      this.tempRangeF = `H: ${Math.round(
+      this.highTempF = `H: ${Math.round(
         ((dayObject.temp.max - 273.15) * 9) / 5 + 32
-      )}° F  L: ${Math.round(((dayObject.temp.min - 273.15) * 9) / 5 + 32)}° F`;
-      this.tempRangeC = `H: ${Math.round(
-        dayObject.temp.max - 273.15
-      )}° C  L: ${Math.round(dayObject.temp.min - 273.15)}° C`;
+      )}° F `;
+      this.lowTempF = `L: ${Math.round(
+        ((dayObject.temp.min - 273.15) * 9) / 5 + 32
+      )}° F`;
+      this.highTempC = `H: ${Math.round(dayObject.temp.max - 273.15)}° C `;
+      this.lowTempC = `L: ${Math.round(dayObject.temp.min - 273.15)}° C`;
     }
   }
 

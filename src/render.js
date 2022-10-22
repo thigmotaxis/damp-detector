@@ -34,7 +34,10 @@ import copyright from "./images/copyright-24w.png";
             class="weatherIcon"
             alt="sunny"
           />
-          <div class="day0Range">H: X° L: Y°</div>
+          <div class="dayRange">
+            <div class="day0High">H: X°</div>
+            <div class="day0Low">L: Y°</div>
+          </div>
         </li>
         <li class="forecastContainer">
           <div class="day1">Day 1</div>
@@ -42,7 +45,10 @@ import copyright from "./images/copyright-24w.png";
             class="weatherIcon"
             alt="cloudy"
           />
-          <div class="day1Range">H: X° L: Y°</div>
+          <div class="dayRange">
+            <div class="day1High">H: X°</div>
+            <div class="day1Low">L: Y°</div>
+          </div>
         </li>
         <li class="forecastContainer">
           <div class="day2">Day 2</div>
@@ -50,7 +56,10 @@ import copyright from "./images/copyright-24w.png";
             class="weatherIcon"
             alt="partly cloudy"
           />
-          <div class="day2Range">H: X° L: Y°</div>
+          <div class="dayRange">
+            <div class="day2High">H: X°</div>
+            <div class="day2Low">L: Y°</div>
+          </div>
         </li>
         <li class="forecastContainer">
           <div class="day3">Day 3</div>
@@ -58,7 +67,10 @@ import copyright from "./images/copyright-24w.png";
             class="weatherIcon"
             alt="rainy"
           />
-          <div class="day3Range">H: X° L: Y°</div>
+          <div class="dayRange">
+            <div class="day3High">H: X°</div>
+            <div class="day3Low">L: Y°</div>
+          </div>
         </li>
         <li class="forecastContainer">
           <div class="day4">Day 4</div>
@@ -66,7 +78,10 @@ import copyright from "./images/copyright-24w.png";
             class="weatherIcon"
             alt="sunny"
           />
-          <div class="day4Range">H: X° L: Y°</div>
+          <div class="dayRange">
+            <div class="day4High">H: X°</div>
+            <div class="day4Low">L: Y°</div>
+          </div>
         </li>
         <li class="forecastContainer">
           <div class="day5">Day 5</div>
@@ -74,7 +89,10 @@ import copyright from "./images/copyright-24w.png";
             class="weatherIcon"
             alt="sunny"
           />
-          <div class="day5Range">H: X° L: Y°</div>
+          <div class="dayRange">
+            <div class="day5High">H: X°</div>
+            <div class="day5Low">L: Y°</div>
+          </div>
         </li>
         <li class="forecastContainer">
           <div class="day6">Day 6</div>
@@ -82,7 +100,10 @@ import copyright from "./images/copyright-24w.png";
             class="weatherIcon"
             alt="sunny"
           />
-          <div class="day6Range">H: X° L: Y°</div>
+          <div class="dayRange">
+            <div class="day6High">H: X°</div>
+            <div class="day6Low">L: Y°</div>
+          </div>
         </li>
       </ul>
 
@@ -139,32 +160,37 @@ export const domCache = {
 
   day0: {
     dayName: document.querySelector(".day0"),
-    tempRange: document.querySelector(".day0Range"),
-    highTemperature: document.querySelector(".highTemp"),
-    lowTemperature: document.querySelector(".lowTemp"),
+    highTemperature: document.querySelector(".day0High"),
+    lowTemperature: document.querySelector(".day0Low"),
   },
   day1: {
     dayName: document.querySelector(".day1"),
-    tempRange: document.querySelector(".day1Range"),
+    highTemperature: document.querySelector(".day1High"),
+    lowTemperature: document.querySelector(".day1Low"),
   },
   day2: {
     dayName: document.querySelector(".day2"),
-    tempRange: document.querySelector(".day2Range"),
+    highTemperature: document.querySelector(".day2High"),
+    lowTemperature: document.querySelector(".day2Low"),
   },
   day3: {
     dayName: document.querySelector(".day3"),
-    tempRange: document.querySelector(".day3Range"),
+    highTemperature: document.querySelector(".day3High"),
+    lowTemperature: document.querySelector(".day3Low"),
   },
   day4: {
     dayName: document.querySelector(".day4"),
-    tempRange: document.querySelector(".day4Range"),
+    highTemperature: document.querySelector(".day4High"),
+    lowTemperature: document.querySelector(".day4Low"),
   },
   day5: {
     dayName: document.querySelector(".day5"),
-    tempRange: document.querySelector(".day5Range"),
+    highTemperature: document.querySelector(".day5High"),
+    lowTemperature: document.querySelector(".day5Low"),
   },
   day6: {
     dayName: document.querySelector(".day6"),
-    tempRange: document.querySelector(".day6Range"),
+    highTemperature: document.querySelector(".day6High"),
+    lowTemperature: document.querySelector(".day6Low"),
   },
 };

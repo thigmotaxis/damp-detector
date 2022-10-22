@@ -166,12 +166,14 @@ export const modifyDOM = (() => {
     // render farenheight temp range data
     if (window.localStorage.getItem("tempScale") === "F") {
       for (let i = 0; i < dayNameElements.length; i++) {
-        dayNameElements[i].tempRange.innerHTML = data[i].tempRangeF;
+        dayNameElements[i].highTemperature.innerHTML = data[i].highTempF;
+        dayNameElements[i].lowTemperature.innerHTML = data[i].lowTempF;
       }
     } else {
       // render celsius temp range data
       for (let i = 0; i < dayNameElements.length; i++) {
-        dayNameElements[i].tempRange.innerHTML = data[i].tempRangeC;
+        dayNameElements[i].highTemperature.innerHTML = data[i].highTempC;
+        dayNameElements[i].lowTemperature.innerHTML = data[i].lowTempC;
       }
     }
   };
