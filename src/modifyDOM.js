@@ -2,9 +2,13 @@ import { domCache } from "./render.js";
 import { callAPI } from "./storage.js";
 import clearIcon from "./images/icons/clearIcon-36w.png";
 import cloudsIcon from "./images/icons/cloudsIcon-36w.png";
+import dustIcon from "./images/icons/dustIcon-36w.png";
 import fogIcon from "./images/icons/fogIcon-36w.png";
 import rainIcon from "./images/icons/rainIcon-36w.png";
+import smokeIcon from "./images/icons/smokeIcon-36w.png";
 import snowIcon from "./images/icons/snowIcon-36w.png";
+import thunderstormIcon from "./images/icons/thunderstormIcon-36w.png";
+import tornadoIcon from "./images/icons/tornadoIcon-36w.png";
 import clearPortrait from "./images/backgrounds/clear-portrait-640w.jpg";
 import clearLandscape from "./images/backgrounds/clear-landscape-1200w.jpg";
 import cloudsPortrait from "./images/backgrounds/clouds-portrait-640w.jpg";
@@ -152,14 +156,30 @@ export const modifyDOM = (() => {
       if (dailyConditions === "Clouds") {
         element.setAttribute("src", cloudsIcon);
       }
-      if (dailyConditions === "Rain") {
+      if (dailyConditions === "Dust" || dailyConditions === "Sand") {
+        element.setAttribute("src", dustIcon);
+      }
+      if (dailyConditions === "Fog" || dailyConditions === "Mist") {
+        element.setAttribute("src", fogIcon);
+      }
+      if (dailyConditions === "Rain" || dailyConditions === "Drizzle") {
         element.setAttribute("src", rainIcon);
+      }
+      if (
+        dailyConditions === "Smoke" ||
+        dailyConditions === "Haze" ||
+        dailyConditions === "Ash"
+      ) {
+        element.setAttribute("src", smokeIcon);
       }
       if (dailyConditions === "Snow") {
         element.setAttribute("src", snowIcon);
       }
-      if (dailyConditions === "Smoke") {
-        element.setAttribute("src", fogIcon);
+      if (dailyConditions === "Thunderstorm") {
+        element.setAttribute("src", thunderstormIcon);
+      }
+      if (dailyConditions === "Tornado" || dailyConditions === "Squall") {
+        element.setAttribute("src", tornadoIcon);
       }
     });
 
