@@ -1,22 +1,22 @@
 import { domCache } from "./render.js";
 import { callAPI } from "./storage.js";
-import cloudyIcon from "./images/cloudyIcon-24w.png";
-import hazyIcon from "./images/hazyIcon-24w.png";
-import rainyIcon from "./images/rainyIcon-24w.png";
-import snowyIcon from "./images/snowyIcon-24w.png";
-import sunnyIcon from "./images/sunnyIcon-24w.png";
-import clearPortrait from "./images/clear-portrait-640w.jpg";
-import clearLandscape from "./images/clear-landscape-1200w.jpg";
-import cloudsPortrait from "./images/clouds-portrait-640w.jpg";
-import cloudsLandscape from "./images/clouds-landscape-1200w.jpg";
-import hazePortrait from "./images/haze-portrait-640w.jpg";
-import hazeLandscape from "./images/haze-landscape-1200w.jpg";
-import rainPortrait from "./images/rain-portrait-640w.jpg";
-import rainLandscape from "./images/rain-landscape-1200w.jpg";
-import smokePortrait from "./images/smoke-portrait-640w.jpg";
-import smokeLandscape from "./images/smoke-landscape-1200w.jpg";
-import snowPortrait from "./images/snow-portrait-640w.jpg";
-import snowLandscape from "./images/snow-landscape-1200w.jpg";
+import clearIcon from "./images/icons/clearIcon-24w.png";
+import cloudsIcon from "./images/icons/cloudsIcon-24w.png";
+import fogIcon from "./images/icons/fogIcon-24w.png";
+import rainIcon from "./images/icons/rainIcon-24w.png";
+import snowIcon from "./images/icons/snowIcon-24w.png";
+import clearPortrait from "./images/backgrounds/clear-portrait-640w.jpg";
+import clearLandscape from "./images/backgrounds/clear-landscape-1200w.jpg";
+import cloudsPortrait from "./images/backgrounds/clouds-portrait-640w.jpg";
+import cloudsLandscape from "./images/backgrounds/clouds-landscape-1200w.jpg";
+import fogPortrait from "./images/backgrounds/fog-portrait-640w.jpg";
+import fogLandscape from "./images/backgrounds/fog-landscape-1200w.jpg";
+import rainPortrait from "./images/backgrounds/rain-portrait-640w.jpg";
+import rainLandscape from "./images/backgrounds/rain-landscape-1200w.jpg";
+import smokePortrait from "./images/backgrounds/smoke-portrait-640w.jpg";
+import smokeLandscape from "./images/backgrounds/smoke-landscape-1200w.jpg";
+import snowPortrait from "./images/backgrounds/snow-portrait-640w.jpg";
+import snowLandscape from "./images/backgrounds/snow-landscape-1200w.jpg";
 
 export const modifyDOM = (() => {
   const toggleTempScale = () => {
@@ -79,8 +79,8 @@ export const modifyDOM = (() => {
       "clearLandscape",
       "cloudsPortrait",
       "cloudsLandscape",
-      "hazePortrait",
-      "hazeLandscape",
+      "fogPortrait",
+      "fogLandscape",
       "rainPortrait",
       "rainLandscape",
       "smokePortrait",
@@ -93,8 +93,8 @@ export const modifyDOM = (() => {
       clearLandscape,
       cloudsPortrait,
       cloudsLandscape,
-      hazePortrait,
-      hazeLandscape,
+      fogPortrait,
+      fogLandscape,
       rainPortrait,
       rainLandscape,
       smokePortrait,
@@ -147,19 +147,19 @@ export const modifyDOM = (() => {
     weatherIcons.forEach((element, index) => {
       const dailyConditions = data[index].dailyConditions;
       if (dailyConditions === "Clear") {
-        element.setAttribute("src", sunnyIcon);
+        element.setAttribute("src", clearIcon);
       }
       if (dailyConditions === "Clouds") {
-        element.setAttribute("src", cloudyIcon);
+        element.setAttribute("src", cloudsIcon);
       }
       if (dailyConditions === "Rain") {
-        element.setAttribute("src", rainyIcon);
+        element.setAttribute("src", rainIcon);
       }
       if (dailyConditions === "Snow") {
-        element.setAttribute("src", snowyIcon);
+        element.setAttribute("src", snowIcon);
       }
       if (dailyConditions === "Smoke") {
-        element.setAttribute("src", hazyIcon);
+        element.setAttribute("src", fogIcon);
       }
     });
 

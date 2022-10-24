@@ -129,7 +129,7 @@ html {
   background-color: navy;
   color: bisque;
   height: 100vh;
-  background-image: url("images/clear-portrait-640w.jpg");
+  background-image: url("images/backgrounds/clear-portrait-640w.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -198,6 +198,9 @@ header {
 .otherWeatherInfo {
   background-color: rgba(39, 39, 39, 0.6);
   border-radius: 20px;
+  /* margin-right: 4vw;
+  margin-left: 4vw;
+  margin-top: 3vh; */
 }
 
 .forecastContainer {
@@ -257,7 +260,7 @@ footer * {
 @media (min-width: 700px) {
   /* if this condition changes, update renderBackgroundImage in modifyDOM.js*/
   html {
-    background-image: url("images/clear-landscape-1200w.jpg");
+    background-image: url("images/backgrounds/clear-landscape-1200w.jpg");
   }
 
   header {

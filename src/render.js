@@ -1,4 +1,4 @@
-import sunnyIcon from "./images/sunnyIcon-24w.png";
+import clearIcon from "./images/icons/clearIcon-24w.png";
 import ghLogo from "./images/gitHubLogo-24w.png";
 import copyright from "./images/copyright-24w.png";
 
@@ -32,7 +32,7 @@ import copyright from "./images/copyright-24w.png";
           <div class="day0">Day 0</div>
           <img
             class="weatherIcon"
-            alt="sunny"
+            alt="clear"
           />
           <div class="dayRange">
             <div class="day0High">H: X°</div>
@@ -76,7 +76,7 @@ import copyright from "./images/copyright-24w.png";
           <div class="day4">Day 4</div>
           <img
             class="weatherIcon"
-            alt="sunny"
+            alt="clear"
           />
           <div class="dayRange">
             <div class="day4High">H: X°</div>
@@ -87,7 +87,7 @@ import copyright from "./images/copyright-24w.png";
           <div class="day5">Day 5</div>
           <img
             class="weatherIcon"
-            alt="sunny"
+            alt="clear"
           />
           <div class="dayRange">
             <div class="day5High">H: X°</div>
@@ -98,7 +98,7 @@ import copyright from "./images/copyright-24w.png";
           <div class="day6">Day 6</div>
           <img
             class="weatherIcon"
-            alt="sunny"
+            alt="clear"
           />
           <div class="dayRange">
             <div class="day6High">H: X°</div>
@@ -131,7 +131,7 @@ import copyright from "./images/copyright-24w.png";
 
   const weatherIcons = document.querySelectorAll(".weatherIcon");
   weatherIcons.forEach((element, index) => {
-    element.setAttribute("src", sunnyIcon);
+    element.setAttribute("src", clearIcon);
   });
 
   const repoLogo = document.querySelector(".repoLogo");
