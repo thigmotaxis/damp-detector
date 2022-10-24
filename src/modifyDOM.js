@@ -13,6 +13,8 @@ import clearPortrait from "./images/backgrounds/clear-portrait-640w.jpg";
 import clearLandscape from "./images/backgrounds/clear-landscape-1200w.jpg";
 import cloudsPortrait from "./images/backgrounds/clouds-portrait-640w.jpg";
 import cloudsLandscape from "./images/backgrounds/clouds-landscape-1200w.jpg";
+import dustPortrait from "./images/backgrounds/dust-portrait-640w.jpg";
+import dustLandscape from "./images/backgrounds/dust-landscape-1200w.jpg";
 import fogPortrait from "./images/backgrounds/fog-portrait-640w.jpg";
 import fogLandscape from "./images/backgrounds/fog-landscape-1200w.jpg";
 import rainPortrait from "./images/backgrounds/rain-portrait-640w.jpg";
@@ -21,6 +23,10 @@ import smokePortrait from "./images/backgrounds/smoke-portrait-640w.jpg";
 import smokeLandscape from "./images/backgrounds/smoke-landscape-1200w.jpg";
 import snowPortrait from "./images/backgrounds/snow-portrait-640w.jpg";
 import snowLandscape from "./images/backgrounds/snow-landscape-1200w.jpg";
+import thunderstormPortrait from "./images/backgrounds/thunderstorm-portrait-640w.jpg";
+import thunderstormLandscape from "./images/backgrounds/thunderstorm-landscape-1200w.jpg";
+import tornadoPortrait from "./images/backgrounds/tornado-portrait-640w.jpg";
+import tornadoLandscape from "./images/backgrounds/tornado-landscape-1200w.jpg";
 
 export const modifyDOM = (() => {
   const toggleTempScale = () => {
@@ -79,32 +85,64 @@ export const modifyDOM = (() => {
     const mediaQuery = window.matchMedia("(min-width: 700px)");
     const orientation = !mediaQuery.matches ? "Portrait" : "Landscape";
     const locationStrings = [
+      "ashPortrait",
+      "ashLandscape",
       "clearPortrait",
       "clearLandscape",
       "cloudsPortrait",
       "cloudsLandscape",
+      "drizzlePortrait",
+      "drizzleLandscape",
+      "dustPortrait",
+      "dustLandscape",
       "fogPortrait",
       "fogLandscape",
+      "hazePortrait",
+      "hazeLandscape",
+      "mistPortrait",
+      "mistLandscape",
       "rainPortrait",
       "rainLandscape",
+      "sandPortrait",
+      "sandLandscape",
       "smokePortrait",
       "smokeLandscape",
       "snowPortrait",
       "snowLandscape",
+      "thunderstormPortrait",
+      "thunderstormLandscape",
+      "tornadoPortrait",
+      "tornadoLandscape",
     ];
     const fileLocations = [
+      smokePortrait,
+      smokeLandscape,
       clearPortrait,
       clearLandscape,
       cloudsPortrait,
       cloudsLandscape,
+      rainPortrait,
+      rainLandscape,
+      dustPortrait,
+      dustLandscape,
+      fogPortrait,
+      fogLandscape,
+      smokePortrait,
+      smokeLandscape,
       fogPortrait,
       fogLandscape,
       rainPortrait,
       rainLandscape,
+      dustPortrait,
+      dustLandscape,
       smokePortrait,
       smokeLandscape,
       snowPortrait,
       snowLandscape,
+      thunderstormPortrait,
+      thunderstormLandscape,
+      tornadoPortrait,
+      tornadoLandscape,
     ];
     for (let i = 0; i < locationStrings.length; i++) {
       if (locationStrings[i] === conditions + orientation) {
