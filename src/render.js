@@ -1,4 +1,4 @@
-import clearIcon from "./images/icons/clearIcon-24w.png";
+import clearIcon from "./images/icons/clearIcon-36w.png";
 import ghLogo from "./images/gitHubLogo-24w.png";
 import copyright from "./images/copyright-24w.png";
 

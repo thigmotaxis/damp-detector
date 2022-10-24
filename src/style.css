@@ -208,6 +208,10 @@ header {
   align-items: center;
 }
 
+.weatherIcon {
+  width: 24px;
+}
+
 .dayRange {
   display: flex;
   flex-wrap: wrap;
@@ -273,6 +277,10 @@ footer * {
   li {
     /* display: flex; */
     flex-direction: column;
+  }
+
+  .weatherIcon {
+    width: 36px;
   }
 
   a:hover {

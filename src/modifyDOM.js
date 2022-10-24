@@ -1,10 +1,10 @@
 import { domCache } from "./render.js";
 import { callAPI } from "./storage.js";
-import clearIcon from "./images/icons/clearIcon-24w.png";
-import cloudsIcon from "./images/icons/cloudsIcon-24w.png";
-import fogIcon from "./images/icons/fogIcon-24w.png";
-import rainIcon from "./images/icons/rainIcon-24w.png";
-import snowIcon from "./images/icons/snowIcon-24w.png";
+import clearIcon from "./images/icons/clearIcon-36w.png";
+import cloudsIcon from "./images/icons/cloudsIcon-36w.png";
+import fogIcon from "./images/icons/fogIcon-36w.png";
+import rainIcon from "./images/icons/rainIcon-36w.png";
+import snowIcon from "./images/icons/snowIcon-36w.png";
 import clearPortrait from "./images/backgrounds/clear-portrait-640w.jpg";
 import clearLandscape from "./images/backgrounds/clear-landscape-1200w.jpg";
 import cloudsPortrait from "./images/backgrounds/clouds-portrait-640w.jpg";
