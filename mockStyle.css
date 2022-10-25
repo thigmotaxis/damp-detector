@@ -125,9 +125,10 @@ table {
 /* END MEYER RESET */
 
 html {
+  --contrastBackground: rgba(39, 39, 39, 0.6);
   box-sizing: border-box;
   background-color: navy;
-  color: bisque;
+  color: white;
   height: 100vh;
   background-image: url("images/backgrounds/clear-portrait-640w.jpg");
   background-size: cover;
@@ -138,7 +139,7 @@ html {
 a,
 a:visited {
   text-decoration: none;
-  color: bisque;
+  color: white;
 }
 
 /* BEGIN HEADER STYLES */
@@ -169,9 +170,9 @@ header {
   align-items: center;
 }
 
-.mainContent * {
+/* .mainContent * {
   padding: 5px;
-}
+} */
 
 .location {
   margin-top: 5vh;
@@ -196,26 +197,58 @@ header {
 
 .sevenDayForecast,
 .otherWeatherInfo {
-  background-color: rgba(39, 39, 39, 0.6);
+  background-color: var(--contrastBackground);
   border-radius: 20px;
-  /* margin-right: 4vw;
-  margin-left: 4vw;
-  margin-top: 3vh; */
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-right: 5vw;
+  margin-left: 5vw;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
 }
 
 .forecastContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
   align-items: center;
+  margin-top: 1vh;
+  padding-right: 2vw;
+  padding-left: 3vw;
+}
+
+.forecastContainer > * {
+  padding: 0.5rem;
 }
 
 .weatherIcon {
   width: 24px;
+  place-self: center;
 }
 
 .dayRange {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.dayRange > div {
+  margin-left: 1.5rem;
+}
+
+.dayRange > :first-child {
+  color: red;
+}
+
+.day0Low,
+.day1Low,
+.day2Low,
+.day3Low,
+.day4Low,
+.day5Low,
+.day6Low {
+  color: rgba(10, 172, 247, 1);
 }
 
 .otherWeatherInfo {
@@ -270,20 +303,46 @@ footer * {
   header {
     display: flex;
   }
-  ul {
-    display: flex;
-  }
 
-  li {
-    /* display: flex; */
-    flex-direction: column;
-  }
-
-  .weatherIcon {
-    width: 36px;
+  .sevenDayForecast,
+  .otherWeatherInfo {
+    font-size: 1.1rem;
   }
 
   a:hover {
     text-decoration: underline;
+  }
+}
+
+@media (min-width: 950px) {
+  .sevenDayForecast {
+    display: flex;
+  }
+
+  .forecastContainer {
+    display: flex;
+    flex-direction: column;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    /* adjust padding values (or maybe clamp values for mobile version */
+  }
+
+  li {
+    font-size: 1.25rem;
+  }
+
+  .weatherIcon {
+    width: 36px;
+    padding: 1rem;
+  }
+  .dayRange {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dayRange > div {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-left: 0;
   }
 }
