@@ -109,9 +109,9 @@ import copyright from "./images/copyright-24w.png";
 
     <div class="otherWeatherInfo">
     <div class="other windSpeed">--</div>
+    <div class="other feelsLike">--</div>
     <div class="other windDirection">--</div>
-      <div class="other humidity">--</div>
-      <div class="other feelsLike">--</div>
+    <div class="other humidity">--</div>
     </div>
   </div>
   <footer>
