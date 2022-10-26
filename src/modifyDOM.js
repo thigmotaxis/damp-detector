@@ -187,37 +187,69 @@ export const modifyDOM = (() => {
 
     const weatherIcons = domCache.weatherIcons;
     weatherIcons.forEach((element, index) => {
-      const dailyConditions = data[index].dailyConditions;
-      if (dailyConditions === "Clear") {
+      const dailyConditions = data[index].dailyConditions.toLowerCase();
+      if (dailyConditions === "clear") {
         element.setAttribute("src", clearIcon);
+        element.setAttribute(
+          "alt",
+          `${data[index].dailyConditions.toLowerCase()} icon`
+        );
       }
-      if (dailyConditions === "Clouds") {
+      if (dailyConditions === "clouds") {
         element.setAttribute("src", cloudsIcon);
+        element.setAttribute(
+          "alt",
+          `${data[index].dailyConditions.toLowerCase()} icon`
+        );
       }
-      if (dailyConditions === "Dust" || dailyConditions === "Sand") {
+      if (dailyConditions === "dust" || dailyConditions === "Sand") {
         element.setAttribute("src", dustIcon);
+        element.setAttribute(
+          "alt",
+          `${data[index].dailyConditions.toLowerCase()} icon`
+        );
       }
-      if (dailyConditions === "Fog" || dailyConditions === "Mist") {
+      if (dailyConditions === "fog" || dailyConditions === "Mist") {
         element.setAttribute("src", fogIcon);
+        element.setAttribute(
+          "alt",
+          `${data[index].dailyConditions.toLowerCase()} icon`
+        );
       }
-      if (dailyConditions === "Rain" || dailyConditions === "Drizzle") {
+      if (dailyConditions === "rain" || dailyConditions === "Drizzle") {
         element.setAttribute("src", rainIcon);
+        element.setAttribute(
+          "alt",
+          `${data[index].dailyConditions.toLowerCase()} icon`
+        );
       }
       if (
-        dailyConditions === "Smoke" ||
-        dailyConditions === "Haze" ||
-        dailyConditions === "Ash"
+        dailyConditions === "smoke" ||
+        dailyConditions === "haze" ||
+        dailyConditions === "ash"
       ) {
         element.setAttribute("src", smokeIcon);
       }
-      if (dailyConditions === "Snow") {
+      if (dailyConditions === "snow") {
         element.setAttribute("src", snowIcon);
+        element.setAttribute(
+          "alt",
+          `${data[index].dailyConditions.toLowerCase()} icon`
+        );
       }
-      if (dailyConditions === "Thunderstorm") {
+      if (dailyConditions === "thunderstorm") {
         element.setAttribute("src", thunderstormIcon);
+        element.setAttribute(
+          "alt",
+          `${data[index].dailyConditions.toLowerCase()} icon`
+        );
       }
-      if (dailyConditions === "Tornado" || dailyConditions === "Squall") {
+      if (dailyConditions === "tornado" || dailyConditions === "Squall") {
         element.setAttribute("src", tornadoIcon);
+        element.setAttribute(
+          "alt",
+          `${data[index].dailyConditions.toLowerCase()} icon`
+        );
       }
     });
 
