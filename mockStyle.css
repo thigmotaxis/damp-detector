@@ -348,6 +348,13 @@ footer * {
   a:hover {
     text-decoration: underline;
   }
+
+  .repoLogo {
+    transition: transform 0.75s;
+  }
+  .repoLogo:hover {
+    transform: rotate(360deg);
+  }
 }
 
 @media (min-width: 950px) {
