@@ -49,12 +49,14 @@ export const modifyDOM = (() => {
 
   const showInputField = () => {
     domCache.changeLocation.classList.add("hidden");
+    domCache.toggleTempScale.classList.add("hidden");
     domCache.locationInput.classList.remove("hidden");
     domCache.submitLocation.classList.remove("hidden");
   };
 
   const hideInputField = () => {
     domCache.changeLocation.classList.remove("hidden");
+    domCache.toggleTempScale.classList.remove("hidden");
     domCache.locationInput.classList.add("hidden");
     domCache.submitLocation.classList.add("hidden");
   };
