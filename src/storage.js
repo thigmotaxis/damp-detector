@@ -26,7 +26,7 @@ export const callAPI = (() => {
         loc = domCache.locationInput.value;
       }
 
-      const url = `http://api.openweathermap.org/geo/1.0/direct?q=${loc}&appid=${apiKey}`;
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&appid=${apiKey}`;
       const retrievedData = fetch(url, { mode: "cors" });
       if (retrievedData) {
         resolve(retrievedData);
