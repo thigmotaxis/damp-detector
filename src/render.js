@@ -13,20 +13,21 @@ import copyright from "./images/copyright-24w.png";
   </header>
 
   <div class="mainContent">
-    <div class="location">--</div>
-    <div class="temp">--</div>
-    <div class="buttonContainer">
-    <button class="toggleTempScale">Display Celsius</button>
-      <button class="changeLocation">Change Location</button>
-      <input
-          type="text"
-          placeholder="Enter a city, state, or country"
-          class="locationInput hidden"
-        />
-        <button class="submit hidden">Submit</button>
+    <div class="currentContainer">
+      <div class="location">--</div>
+      <div class="temp">--</div>
+      <div class="buttonContainer">
+      <button class="toggleTempScale">Display Celsius</button>
+        <button class="changeLocation">Change Location</button>
+        <input
+            type="text"
+            placeholder="Enter a city, state, or country"
+            class="locationInput hidden"
+          />
+          <button class="submit hidden">Submit</button>
+      </div>
+      <div class="conditions"></div>
     </div>
-    <div class="conditions"></div>
-   
     <ul class="sevenDayForecast">
         <li class="forecastContainer">
           <div class="day0">Day 0</div>
