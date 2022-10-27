@@ -77,24 +77,19 @@ export const callAPI = (() => {
           .then((retrievedDataObject) => {
             const processedCurrent =
               processCurrentWeatherData(retrievedDataObject);
+            window.localStorage.setItem(
+              "currentWeatherData",
+              JSON.stringify(processedCurrent)
+            );
             const processedDaily = processDailyWeatherData(
               retrievedDataObject.daily
             );
-            return { processedCurrent, processedDaily };
-            // extract relevant info and save in two objects
-          })
-          .then((processedWeatherData) => {
-            window.localStorage.setItem(
-              "currentWeatherData",
-              JSON.stringify(processedWeatherData.processedCurrent)
-            );
-
             window.localStorage.setItem(
               "dailyForecast",
-              JSON.stringify(processedWeatherData.processedDaily)
+              JSON.stringify(processedDaily)
             );
-            // save processed data to local storage
-            return processedWeatherData;
+            return { processedCurrent, processedDaily };
+            // extract relevant info and save in two objects, local storage
           })
           .then((processedWeatherData) => {
             modifyDOM.renderBackgroundImage();
