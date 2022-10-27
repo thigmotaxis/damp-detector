@@ -38,7 +38,7 @@ export const modifyDOM = (() => {
     );
     if (localStorage.getItem("tempScale") === "F") {
       localStorage.setItem("tempScale", "C");
-      domCache.toggleTempScale.innerHTML = "Display Farenheight";
+      domCache.toggleTempScale.innerHTML = "Display Fahrenheit";
     } else {
       localStorage.setItem("tempScale", "F");
       domCache.toggleTempScale.innerHTML = "Display Celsius";
@@ -255,7 +255,7 @@ export const modifyDOM = (() => {
       }
     });
 
-    // render farenheight temp range data
+    // render fahrenheit temp range data
     if (window.localStorage.getItem("tempScale") === "F") {
       for (let i = 0; i < dayNameElements.length; i++) {
         dayNameElements[i].highTemperature.innerHTML = data[i].highTempF;
