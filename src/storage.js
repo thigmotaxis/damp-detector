@@ -51,6 +51,7 @@ export const callAPI = (() => {
 
   const getWeatherData = () => {
     const requestCoordinates = createPromise();
+    modifyDOM.toggleLoadingDisplay();
     requestCoordinates
       .then((retrievedData) => {
         const retrievedDataObject = retrievedData.json();
@@ -96,6 +97,7 @@ export const callAPI = (() => {
             modifyDOM.renderWeatherData(processedWeatherData.processedCurrent);
             modifyDOM.renderForecastData(processedWeatherData.processedDaily);
             // update the DOM with properties from that object
+            modifyDOM.toggleLoadingDisplay();
           });
       })
 

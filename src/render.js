@@ -114,6 +114,7 @@ import copyright from "./images/copyright-24w.png";
     <div class="other windDirection">--</div>
     <div class="other humidity">--</div>
     </div>
+    <div class="mask hidden"></div>
   </div>
   <footer>
     <a
@@ -158,6 +159,7 @@ export const domCache = {
   windSpeed: document.querySelector(".windSpeed"),
   windDirection: document.querySelector(".windDirection"),
   humidity: document.querySelector(".humidity"),
+  mask: document.querySelector(".mask"),
 
   day0: {
     dayName: document.querySelector(".day0"),

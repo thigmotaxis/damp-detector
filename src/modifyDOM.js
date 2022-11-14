@@ -67,6 +67,16 @@ export const modifyDOM = (() => {
     }
   };
 
+  const toggleLoadingDisplay = () => {
+    if (domCache.changeLocation.innerHTML === "Change Location") {
+      domCache.changeLocation.innerHTML = "Loading...";
+      domCache.mask.classList.remove("hidden");
+    } else {
+      domCache.changeLocation.innerHTML = "Change Location";
+      domCache.mask.classList.add("hidden");
+    }
+  };
+
   // CREATE HANDLER FUNCTIONS
   const createHandlerFunctions = () => {
     domCache.toggleTempScale.addEventListener("click", toggleTempScale);
@@ -275,5 +285,6 @@ export const modifyDOM = (() => {
     renderBackgroundImage,
     renderWeatherData,
     renderForecastData,
+    toggleLoadingDisplay,
   };
 })();
