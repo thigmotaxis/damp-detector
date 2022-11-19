@@ -20,7 +20,6 @@ Upcoming features/things I'd like to fix or change:
    container size shouldn't change when the temperature scale is toggled)
 3. improve color palette. Some of the icons/text contrast poorly with certain background images
    - changing the color/opacity of the container backgrounds is probably the best fix here
-4. add a loading animation during api calls
 
 New things I have learned while building this project:
 
